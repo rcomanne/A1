@@ -59,7 +59,7 @@
       <Project>{d144df4d-0742-496b-91b5-fa31a0c30404}</Project>
       <Name>CinemaTicketSystem.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CinemaTicketSystem\CinemaTicketSystem.WebUI.csproj">
+    <ProjectReference Include="..\CinemaTicketSystem.WebUI\CinemaTicketSystem.WebUI.csproj">
       <Project>{e3d115f6-2f48-4d63-bf6b-959a0bf794fc}</Project>
       <Name>CinemaTicketSystem.WebUI</Name>
     </ProjectReference>

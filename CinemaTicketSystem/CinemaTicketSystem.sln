@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTicketSystem.Domain", "CinemaTicketSystem.Domain\CinemaTicketSystem.Domain.csproj", "{D144DF4D-0742-496B-91B5-FA31A0C30404}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTicketSystem.WebUI", "CinemaTicketSystem\CinemaTicketSystem.WebUI.csproj", "{E3D115F6-2F48-4D63-BF6B-959A0BF794FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTicketSystem.WebUI", "CinemaTicketSystem.WebUI\CinemaTicketSystem.WebUI.csproj", "{E3D115F6-2F48-4D63-BF6B-959A0BF794FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTicketSystem.UnitTests", "CinemaTicketSystem.UnitTests\CinemaTicketSystem.UnitTests.csproj", "{0B28B4CB-5304-4574-AE01-7B41F6CE6AD8}"
 EndProject
