@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CinemaTicketSystem.Domain.Entities;
+using CinemaTicketSystem.Domain.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,18 @@ namespace CinemaTicketSystem.TouchUI.Controllers
 {
     public class HomeController : Controller
     {
+        private IRepository repo;
+
+        public HomeController(IRepository repo)
+        {
+            this.repo = repo;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Movie> movies = repo.GetAll<Movie>();
+
+            return View(movies);
         }
 
         public ActionResult About()

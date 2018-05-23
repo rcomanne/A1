@@ -99,6 +99,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CinemaTicketSystem.Domain\CinemaTicketSystem.Domain.csproj">
+      <Project>{4f14b653-e15d-4c0d-af53-083e4c145644}</Project>
+      <Name>CinemaTicketSystem.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CinemaTicketSystem.TouchUI\CinemaTicketSystem.TouchUI.csproj">
       <Project>{8513BCC8-9F9D-4C21-91EE-1ECFCDF6C1F7}</Project>
       <Name>CinemaTicketSystem.TouchUI</Name>
