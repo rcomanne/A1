@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2043
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTicketSystem.Domain", "CinemaTicketSystem.Domain\CinemaTicketSystem.Domain.csproj", "{D144DF4D-0742-496B-91B5-FA31A0C30404}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaTicketSystem.Domain", "CinemaTicketSystem.Domain\CinemaTicketSystem.Domain.csproj", "{D144DF4D-0742-496B-91B5-FA31A0C30404}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTicketSystem.WebUI", "CinemaTicketSystem.WebUI\CinemaTicketSystem.WebUI.csproj", "{E3D115F6-2F48-4D63-BF6B-959A0BF794FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTicketSystem.TouchUI", "CinemaTicketSystem.TouchUI\CinemaTicketSystem.TouchUI.csproj", "{8513BCC8-9F9D-4C21-91EE-1ECFCDF6C1F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTicketSystem.UnitTests", "CinemaTicketSystem.UnitTests\CinemaTicketSystem.UnitTests.csproj", "{0B28B4CB-5304-4574-AE01-7B41F6CE6AD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTicketSystem.TouchUI.Tests", "CinemaTicketSystem.TouchUI.Tests\CinemaTicketSystem.TouchUI.Tests.csproj", "{63681016-47E9-45F8-8E7A-25F2A72428A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{D144DF4D-0742-496B-91B5-FA31A0C30404}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D144DF4D-0742-496B-91B5-FA31A0C30404}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D144DF4D-0742-496B-91B5-FA31A0C30404}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3D115F6-2F48-4D63-BF6B-959A0BF794FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3D115F6-2F48-4D63-BF6B-959A0BF794FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3D115F6-2F48-4D63-BF6B-959A0BF794FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3D115F6-2F48-4D63-BF6B-959A0BF794FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B28B4CB-5304-4574-AE01-7B41F6CE6AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B28B4CB-5304-4574-AE01-7B41F6CE6AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B28B4CB-5304-4574-AE01-7B41F6CE6AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B28B4CB-5304-4574-AE01-7B41F6CE6AD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8513BCC8-9F9D-4C21-91EE-1ECFCDF6C1F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8513BCC8-9F9D-4C21-91EE-1ECFCDF6C1F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8513BCC8-9F9D-4C21-91EE-1ECFCDF6C1F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8513BCC8-9F9D-4C21-91EE-1ECFCDF6C1F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63681016-47E9-45F8-8E7A-25F2A72428A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63681016-47E9-45F8-8E7A-25F2A72428A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63681016-47E9-45F8-8E7A-25F2A72428A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63681016-47E9-45F8-8E7A-25F2A72428A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
