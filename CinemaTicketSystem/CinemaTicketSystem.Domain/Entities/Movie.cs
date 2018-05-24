@@ -8,6 +8,16 @@ namespace CinemaTicketSystem.Domain.Entities
     {
         public string ImageUrl { get; set; }
 
+        public int YearOfRelease { get; set; }
+
+        public int LengthInMinutes { get; set; }
+
+        public string SpokenLanguage { get; set; }
+
+        public int MinimumAge { get; set; }
+
+        public string Genre { get; set; }
+
         public virtual IEnumerable<Showing> Showings { get; set; }
     }
 }
