@@ -22,9 +22,12 @@ namespace CinemaTicketSystem.TouchUI.Controllers
         }
 
         // GET: Movies
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View(repo.GetAll<Movie>());
+            DateTime tomorrow = DateTime.Today.AddDays(1);
+            IEnumerable<Showing> showings = repo.Get<Showing>(s => s.Start > DateTime.Now && s.Start < tomorrow, q => q.OrderBy(s => s.Start));
+
+            return View(showings);
         }
     }
 }

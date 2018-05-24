@@ -4,17 +4,12 @@ using System.Text;
 
 namespace CinemaTicketSystem.Domain.Abstract
 {
-    public interface IModifiableEntity
-    {
-        string Name { get; set; }
-    }
-
-    public interface IEntity : IModifiableEntity
+    public interface IEntity
     {
         object Id { get; set; }
         DateTime CreatedDate { get; set; }
-        DateTime? ModifiedDate { get; set; }
         string CreatedBy { get; set; }
+        DateTime? ModifiedDate { get; set; }
         string ModifiedBy { get; set; }
     }
 

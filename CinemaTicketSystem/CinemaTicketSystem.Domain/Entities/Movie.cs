@@ -6,6 +6,8 @@ namespace CinemaTicketSystem.Domain.Entities
 {
     public class Movie : Entity<int>
     {
+        public string Name { get; set; }
+    
         public string ImageUrl { get; set; }
 
         public int YearOfRelease { get; set; }
