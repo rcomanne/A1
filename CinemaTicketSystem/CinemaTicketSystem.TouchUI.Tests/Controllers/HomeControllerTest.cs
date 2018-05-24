@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CinemaTicketSystem.TouchUI;
 using CinemaTicketSystem.TouchUI.Controllers;
+using CinemaTicketSystem.Domain.Abstract;
+using Moq;
+using CinemaTicketSystem.Domain.Entities;
 
 namespace CinemaTicketSystem.TouchUI.Tests.Controllers
 {
@@ -16,20 +19,31 @@ namespace CinemaTicketSystem.TouchUI.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            Mock<IRepository> mock = new Mock<IRepository>();
+            mock.Setup(m => m.GetAll<Movie>(null, null, null, null)).Returns(new List<Movie>()
+            {
+                new Movie() {Name = "Movie1"},
+                new Movie() {Name = "Movie2"},
+                new Movie() {Name = "Movie3"},
+            });
+            HomeController controller = new HomeController(mock.Object);
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            Movie[] result = ((IEnumerable<Movie>)controller.Index().ViewData.Model).ToArray();
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(3, result.Count());
+            Assert.AreEqual("Movie1", result[0].Name);
+            Assert.AreEqual("Movie2", result[1].Name);
+            Assert.AreEqual("Movie3", result[2].Name);
         }
 
         [TestMethod]
         public void About()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            Mock<IRepository> mock = new Mock<IRepository>();
+            HomeController controller = new HomeController(mock.Object);
 
             // Act
             ViewResult result = controller.About() as ViewResult;
@@ -42,7 +56,8 @@ namespace CinemaTicketSystem.TouchUI.Tests.Controllers
         public void Contact()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            Mock<IRepository> mock = new Mock<IRepository>();
+            HomeController controller = new HomeController(mock.Object);
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;
