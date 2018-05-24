@@ -141,6 +141,10 @@ namespace CinemaTicketSystem.Domain.Concrete
             return context.Set<TEntity>().Find(id);
         }
 
+        public virtual TEntity GetByName<TEntity>(string name) where TEntity : class, IEntity {
+            return context.Set<TEntity>().Find(name);
+        }
+
         public virtual Task<TEntity> GetByIdAsync<TEntity>(object id)
             where TEntity : class, IEntity
         {

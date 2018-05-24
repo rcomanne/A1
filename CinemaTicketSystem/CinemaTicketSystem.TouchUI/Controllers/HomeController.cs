@@ -37,5 +37,10 @@ namespace CinemaTicketSystem.TouchUI.Controllers
 
             return View();
         }
+
+        public ActionResult MovieDetails(int? Id) {
+
+            return View();
+        }
     }
 }

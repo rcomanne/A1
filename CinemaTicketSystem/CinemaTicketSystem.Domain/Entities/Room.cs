@@ -8,6 +8,10 @@ namespace CinemaTicketSystem.Domain.Entities
     {
         public int LocationId { get; set; }
 
+        public int NumberOfSeats { get; set; }
+
+        public Boolean WheelchairAccesible { get; set; }
+
         public virtual Location Location { get; set; }
 
         public virtual IEnumerable<Showing> Showings { get; set; }
