@@ -10,7 +10,7 @@ namespace CinemaTicketSystem.Domain.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(CinemaTicketSystem.Domain.Concrete.ApplicationDbContext context)

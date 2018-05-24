@@ -10,18 +10,9 @@ namespace CinemaTicketSystem.TouchUI.Controllers
 {
     public class HomeController : Controller
     {
-        private IRepository repo;
-
-        public HomeController(IRepository repo)
-        {
-            this.repo = repo;
-        }
-
         public ViewResult Index()
         {
-            IEnumerable<Movie> movies = repo.GetAll<Movie>();
-
-            return View(movies);
+            return View();
         }
 
         public ViewResult About()
@@ -34,11 +25,6 @@ namespace CinemaTicketSystem.TouchUI.Controllers
         public ViewResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult MovieDetails(int? Id) {
 
             return View();
         }

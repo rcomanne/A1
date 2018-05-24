@@ -1,10 +1,14 @@
-﻿using CinemaTicketSystem.Domain.Entities;
-using CinemaTicketSystem.Domain.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using CinemaTicketSystem.Domain.Abstract;
+using CinemaTicketSystem.Domain.Concrete;
+using CinemaTicketSystem.Domain.Entities;
 
 namespace CinemaTicketSystem.TouchUI.Controllers
 {
@@ -17,9 +21,10 @@ namespace CinemaTicketSystem.TouchUI.Controllers
             this.repo = repo;
         }
 
-        public ActionResult GetMovieDetails() {
-
-            return View();
+        // GET: Movies
+        public ActionResult Index()
+        {
+            return View(repo.GetAll<Movie>());
         }
     }
 }

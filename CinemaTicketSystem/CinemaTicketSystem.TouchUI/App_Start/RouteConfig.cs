@@ -18,12 +18,6 @@ namespace CinemaTicketSystem.TouchUI
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
-            routes.MapRoute(
-                name: "GetMovieDetails",
-                url: "MovieController/GetMovieDetails/{movieName}",
-                defaults: new { controller = "Movie", action = "GetMovieDetails", movieName = UrlParameter.Optional }
-            );
         }
     }
 }
