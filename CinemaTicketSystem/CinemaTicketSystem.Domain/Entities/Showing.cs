@@ -7,6 +7,8 @@ namespace CinemaTicketSystem.Domain.Entities
 {
     public class Showing : Entity<int>
     {
+        public DateTime Start { get; set; }
+
         public int MovieId { get; set; }
 
         public int RoomId { get; set; }

@@ -6,6 +6,8 @@ namespace CinemaTicketSystem.Domain.Entities
 {
     public class Room : Entity<int>
     {
+        public string Name { get; set; }
+
         public int LocationId { get; set; }
 
         public int NumberOfSeats { get; set; }

@@ -18,8 +18,6 @@ namespace CinemaTicketSystem.Domain.Concrete
             set { this.Id = (T)value; }
         }
 
-        public string Name { get; set; }
-
         private DateTime? createdDate;
         [DataType(DataType.DateTime)]
         public DateTime CreatedDate
