@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CinemaTicketSystem.Domain.Entities.Showing>
+@{
+    ViewBag.Title = "Showings";
+}
+
+<div class="row">
+    @foreach (var showing in Model)
+    {
+        <div class="col-lg-6 col-12 mb-2">
+            <div class="border p-2 h-100">
+                <div class="row">
+                    <div class="col-sm-5 text-center">
+                        <img src="@showing.Movie.ImageUrl" alt="@showing.Movie.Name" class="img-fluid">
+                    </div>
+                    <div class="col-sm-7 d-flex flex-column">
+                        <h3>@showing.Movie.Name</h3>
+                        <dl class="row mb-auto align-items-start">
+                            <dt class="col-4">Start:</dt>
+                            <dd class="col-8">@showing.Start.ToString()</dd>
+                            <dt class="col-4">Duur:</dt>
+                            <dd class="col-8">@showing.Movie.LengthInMinutes.ToString() minuten</dd>
+                            <dt class="col-4">Prijs:</dt>
+                            <dd class="col-8"></dd>
+                            <dt class="col-4">Zaal:</dt>
+                            <dd class="col-8">@showing.Room.Name</dd>
+                        </dl>
+                        <a href="#" class="btn btn-primary float-right">Reserveer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
