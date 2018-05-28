@@ -15,9 +15,13 @@ namespace CinemaTicketSystem.Domain.Migrations
 
         protected override void Seed(CinemaTicketSystem.Domain.Concrete.ApplicationDbContext context)
         {
+
+            Location Tilburg = new Location { Id = 1, Name = "Tilburg" };
+            Room room7 = new Room { Id = 7, Name = "7", NumberOfSeats = 120, WheelchairAccesible = true, Location = Tilburg };
+
             context.Locations.AddOrUpdate(
-                l => l.Id,
-                new Location { Id = 1, Name = "Tilburg" }
+                l => l.Name,
+                Tilburg
             );
             
             context.Movies.AddOrUpdate(
@@ -37,7 +41,8 @@ namespace CinemaTicketSystem.Domain.Migrations
                 new Room { Id = 3, Name = "3", LocationId = context.Locations.Find(1).Id },
                 new Room { Id = 4, Name = "4", LocationId = context.Locations.Find(1).Id },
                 new Room { Id = 5, Name = "5", LocationId = context.Locations.Find(1).Id },
-                new Room { Id = 6, Name = "6", LocationId = context.Locations.Find(1).Id }
+                new Room { Id = 6, Name = "6", LocationId = context.Locations.Find(1).Id },
+                room7
             );
 
             context.Showings.Add(new Showing { MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(13) });
@@ -53,6 +58,16 @@ namespace CinemaTicketSystem.Domain.Migrations
             context.Showings.Add(new Showing { MovieId = 4, RoomId = 4, Start = DateTime.Today.AddHours(20) });
             context.Showings.Add(new Showing { MovieId = 5, RoomId = 5, Start = DateTime.Today.AddHours(20) });
             context.Showings.Add(new Showing { MovieId = 6, RoomId = 6, Start = DateTime.Today.AddHours(20) });
+
+            foreach (int row in Enumerable.Range(1, 8))
+            {
+
+                foreach (int num in Enumerable.Range(1, 15))
+                {
+                    context.Seats.AddOrUpdate(m => m.Row,
+                       new Seat { Available = true, Room = room7, Number = num, Row = row });
+                }
+            }
         }
     }
 }
