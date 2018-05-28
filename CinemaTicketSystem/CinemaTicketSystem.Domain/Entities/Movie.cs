@@ -20,6 +20,6 @@ namespace CinemaTicketSystem.Domain.Entities
 
         public string Genre { get; set; }
 
-        public virtual IEnumerable<Showing> Showings { get; set; }
+        public virtual ICollection<Showing> Showings { get; set; }
     }
 }

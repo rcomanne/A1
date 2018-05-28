@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CinemaTicketSystem.Domain.Entities.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    @foreach (var movie in Model)
+    {
+        <div class="col-lg-6 col-12 mb-2">
+            <div class="border p-2 h-100">
+                <div class="row">
+                    <div class="col-sm-5 text-center">
+                        <img src="@movie.ImageUrl" alt="@movie.Name" class="img-fluid">
+                    </div>
+                    <div class="col-sm-7 d-flex flex-column">
+                        <h3>@movie.Name</h3>
+                        <dl class="row mb-auto align-items-start">
+                            <dt class="col-4">Duur:</dt>
+                            <dd class="col-8">@movie.LengthInMinutes.ToString() minuten</dd>
+                            <dt class="col-4">Prijs:</dt>
+                            <dd class="col-8"></dd>
+                        </dl>
+                        <a href="@Url.Action("Details", "Movie", new { id = movie.Id })" class="btn btn-primary float-right">Details en shows</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

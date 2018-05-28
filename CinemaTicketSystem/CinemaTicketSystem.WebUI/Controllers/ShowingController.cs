@@ -17,7 +17,7 @@ namespace WebUI.Controllers
             this.repo = repo;
         }
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
             IEnumerable<Showing> showings = repo.Get<Showing>(s => s.Start >= DateTime.Now, q => q.OrderBy(s => s.Start));
             return View(showings);
