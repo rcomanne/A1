@@ -64,7 +64,7 @@ namespace CinemaTicketSystem.Domain.Migrations
 
                 foreach (int num in Enumerable.Range(1, 15))
                 {
-                    context.Seats.AddOrUpdate(m => m.Row,
+                    context.Seats.AddOrUpdate(m => m.Number,
                        new Seat { Available = true, Room = room7, Number = num, Row = row });
                 }
             }

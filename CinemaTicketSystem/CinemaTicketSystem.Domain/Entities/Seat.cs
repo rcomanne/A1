@@ -9,7 +9,6 @@ namespace CinemaTicketSystem.Domain.Entities
 {
     public class Seat : Entity<int>
     {
-        public Boolean Available { get; set; }
 
         [Index("IX_NumberRowRoom", 1, IsUnique = true)]
         public int Number { get; set; }
