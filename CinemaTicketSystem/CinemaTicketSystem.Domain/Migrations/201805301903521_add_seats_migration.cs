@@ -12,9 +12,8 @@ namespace CinemaTicketSystem.Domain.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Available = c.Boolean(nullable: false),
-                        Number = c.Int(nullable: false),
                         Row = c.Int(nullable: false),
+                        Number = c.Int(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(),
                         CreatedBy = c.String(),
@@ -23,7 +22,7 @@ namespace CinemaTicketSystem.Domain.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Rooms", t => t.Room_Id)
-                .Index(t => new { t.Number, t.Row }, unique: true, name: "IX_NumberRowRoom")
+                .Index(t => new { t.Row, t.Number }, name: "IX_NumberRowRoom")
                 .Index(t => t.Room_Id);
             
         }

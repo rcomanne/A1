@@ -13,7 +13,7 @@ namespace CinemaTicketSystem.Domain.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201805282002147_add_seats_migration"; }
+            get { return "201805301903521_add_seats_migration"; }
         }
         
         string IMigrationMetadata.Source

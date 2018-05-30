@@ -10,14 +10,14 @@ namespace CinemaTicketSystem.Domain.Entities
     public class Seat : Entity<int>
     {
 
-        [Index("IX_NumberRowRoom", 1, IsUnique = true)]
-        public int Number { get; set; }
+        [Index("IX_NumberRowRoom", 1)]
+        public virtual Room Room { get; set; }
 
-        [Index("IX_NumberRowRoom", 2, IsUnique = true)]
+        [Index("IX_NumberRowRoom", 2)]
         public int Row { get; set; }
 
-        [Index("IX_NumberRowRoom", 3, IsUnique = true)]
-        public virtual Room Room { get; set; }
+        [Index("IX_NumberRowRoom", 3)]
+        public int Number { get; set; }
 
     }
 }

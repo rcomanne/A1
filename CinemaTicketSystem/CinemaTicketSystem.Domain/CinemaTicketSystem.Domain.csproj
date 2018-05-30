@@ -71,9 +71,9 @@
     <Compile Include="Migrations\201805241451029_ExpandShowing.Designer.cs">
       <DependentUpon>201805241451029_ExpandShowing.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805282002147_add_seats_migration.cs" />
-    <Compile Include="Migrations\201805282002147_add_seats_migration.Designer.cs">
-      <DependentUpon>201805282002147_add_seats_migration.cs</DependentUpon>
+    <Compile Include="Migrations\201805301903521_add_seats_migration.cs" />
+    <Compile Include="Migrations\201805301903521_add_seats_migration.Designer.cs">
+      <DependentUpon>201805301903521_add_seats_migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,8 +92,8 @@
     <EmbeddedResource Include="Migrations\201805241451029_ExpandShowing.resx">
       <DependentUpon>201805241451029_ExpandShowing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805282002147_add_seats_migration.resx">
-      <DependentUpon>201805282002147_add_seats_migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805301903521_add_seats_migration.resx">
+      <DependentUpon>201805301903521_add_seats_migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
