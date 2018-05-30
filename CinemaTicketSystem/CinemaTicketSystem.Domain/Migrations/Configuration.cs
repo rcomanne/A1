@@ -17,7 +17,7 @@ namespace CinemaTicketSystem.Domain.Migrations
         {
 
             Location Tilburg = new Location { Id = 1, Name = "Tilburg" };
-            Room room7 = new Room { Id = 7, Name = "7", NumberOfSeats = 120, WheelchairAccesible = true, Location = Tilburg };
+            Room room6 = new Room { Id = 6, Name = "6", NumberOfSeats = 120, WheelchairAccesible = true, Location = Tilburg };
 
             context.Locations.AddOrUpdate(
                 l => l.Name,
@@ -41,8 +41,7 @@ namespace CinemaTicketSystem.Domain.Migrations
                 new Room { Id = 3, Name = "3", LocationId = context.Locations.Find(1).Id },
                 new Room { Id = 4, Name = "4", LocationId = context.Locations.Find(1).Id },
                 new Room { Id = 5, Name = "5", LocationId = context.Locations.Find(1).Id },
-                new Room { Id = 6, Name = "6", LocationId = context.Locations.Find(1).Id },
-                room7
+                room6
             );
 
             context.Showings.Add(new Showing { MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(13) });
@@ -64,8 +63,7 @@ namespace CinemaTicketSystem.Domain.Migrations
 
                 foreach (int num in Enumerable.Range(1, 15))
                 {
-                    context.Seats.AddOrUpdate(m => m.Number,
-                       new Seat { Available = true, Room = room7, Number = num, Row = row });
+                    context.Seats.Add(new Seat { Room = room6, Number = num, Row = row });
                 }
             }
         }
