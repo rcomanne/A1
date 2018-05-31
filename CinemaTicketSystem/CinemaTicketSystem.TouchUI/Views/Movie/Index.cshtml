@@ -1,25 +1,26 @@
-﻿@model IEnumerable<CinemaTicketSystem.Domain.Entities.Movie>
+﻿@model IEnumerable<CinemaTicketSystem.Domain.Entities.Showing>
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Koop kaartje";
 }
 
 <div class="row">
-    @foreach (var movie in Model)
+    @foreach (var showing in Model)
     {
         <div class="col-sm-3 mb-2">
             <div class="border p-2 h-100 d-block">
-                <img src="@movie.ImageUrl" alt="@movie.Name" class="img-fluid">
+                <img src="@showing.Movie.ImageUrl" alt="@showing.Movie.Name" class="img-fluid">
                 <div class="caption">
-                    <h3>@movie.Name</h3>
+                    <h3>@showing.Movie.Name</h3>
                     <dl class="row">
-                        <dt class="col-6">Tijd:@movie.LengthInMinutes minuten</dt>
-                        <dd class="col-6"></dd>
+                        <dt class="col-6">Tijd:</dt>
+                        <dd class="col-6">@showing.Start.ToShortTimeString()</dd>
                         <dt class="col-6">Zaal:</dt>
-                        <dd class="col-6"></dd>
-                        <dt class="col-6">Vrije plaatsen:</dt>
-                        <dd class="col-6"></dd>
+                        <dd class="col-6">@showing.Room.Name</dd>
                     </dl>
+                </div>
+                <div>
+                    <button class="btn btn-primary" style="display: block; margin: 0 auto;"><a style="text-decoration: none; color: white;" href="../Payment/Index">Koop kaartje</a></button>
                 </div>
             </div>
         </div>

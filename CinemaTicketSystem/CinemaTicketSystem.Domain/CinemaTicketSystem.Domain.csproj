@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201805231754202_add movie image.Designer.cs">
       <DependentUpon>201805231754202_add movie image.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805241451029_ExpandShowing.cs" />
+    <Compile Include="Migrations\201805241451029_ExpandShowing.Designer.cs">
+      <DependentUpon>201805241451029_ExpandShowing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805231754202_add movie image.resx">
       <DependentUpon>201805231754202_add movie image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805241451029_ExpandShowing.resx">
+      <DependentUpon>201805241451029_ExpandShowing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

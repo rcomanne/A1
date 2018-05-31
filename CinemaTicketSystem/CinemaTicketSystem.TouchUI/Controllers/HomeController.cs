@@ -14,19 +14,5 @@ namespace CinemaTicketSystem.TouchUI.Controllers
         {
             return View();
         }
-
-        public ViewResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ViewResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

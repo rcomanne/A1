@@ -7,5 +7,6 @@ namespace CinemaTicketSystem.Domain.Entities
 {
     public class Location : Entity<int>
     {
+        public string Name { get; set; }
     }
 }
