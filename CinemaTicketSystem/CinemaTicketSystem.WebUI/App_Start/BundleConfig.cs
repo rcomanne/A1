@@ -25,6 +25,7 @@ namespace CinemaTicketSystem.WebUI
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/open-iconic-bootstrap.css",
                       "~/Content/site.css"));
         }
     }
