@@ -17,5 +17,6 @@ namespace CinemaTicketSystem.Domain.Concrete
         public virtual DbSet<Movie> Movies { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Showing> Showings { get; set; }
+        public virtual DbSet<Seat> Seats { get; set; }
     }
 }

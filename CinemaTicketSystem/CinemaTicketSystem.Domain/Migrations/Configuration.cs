@@ -15,10 +15,21 @@ namespace CinemaTicketSystem.Domain.Migrations
 
         protected override void Seed(CinemaTicketSystem.Domain.Concrete.ApplicationDbContext context)
         {
+
+            Location Tilburg = new Location { Id = 1, Name = "Tilburg" };
+
             context.Locations.AddOrUpdate(
-                l => l.Id,
-                new Location { Id = 1, Name = "Tilburg" }
+                l => l.Name,
+                Tilburg
             );
+
+            Room room1 = new Room { Id = 1, Name = "1", NumberOfSeats = 120, WheelchairAccesible = true, LocationId = context.Locations.Find(1).Id };
+            Room room2 = new Room { Id = 2, Name = "2", NumberOfSeats = 120, WheelchairAccesible = true, LocationId = context.Locations.Find(1).Id };
+            Room room3 = new Room { Id = 3, Name = "3", NumberOfSeats = 120, WheelchairAccesible = true, LocationId = context.Locations.Find(1).Id };
+            Room room4 = new Room { Id = 4, Name = "4", NumberOfSeats = 60, WheelchairAccesible = true, LocationId = context.Locations.Find(1).Id };
+            Room room5 = new Room { Id = 5, Name = "5", NumberOfSeats = 50, WheelchairAccesible = false, LocationId = context.Locations.Find(1).Id };
+            Room room6 = new Room { Id = 6, Name = "6", NumberOfSeats = 50, WheelchairAccesible = false, LocationId = context.Locations.Find(1).Id };
+
             
             context.Movies.AddOrUpdate(
                 m => m.Id,
@@ -32,12 +43,7 @@ namespace CinemaTicketSystem.Domain.Migrations
 
             context.Rooms.AddOrUpdate(
                 r => r.Name,
-                new Room { Id = 1, Name = "1", LocationId = context.Locations.Find(1).Id },
-                new Room { Id = 2, Name = "2", LocationId = context.Locations.Find(1).Id },
-                new Room { Id = 3, Name = "3", LocationId = context.Locations.Find(1).Id },
-                new Room { Id = 4, Name = "4", LocationId = context.Locations.Find(1).Id },
-                new Room { Id = 5, Name = "5", LocationId = context.Locations.Find(1).Id },
-                new Room { Id = 6, Name = "6", LocationId = context.Locations.Find(1).Id }
+                room6
             );
 
             context.Showings.Add(new Showing { MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(13) });
@@ -47,12 +53,45 @@ namespace CinemaTicketSystem.Domain.Migrations
             context.Showings.Add(new Showing { MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(16) });
             context.Showings.Add(new Showing { MovieId = 4, RoomId = 3, Start = DateTime.Today.AddHours(16) });
             context.Showings.Add(new Showing { MovieId = 6, RoomId = 4, Start = DateTime.Today.AddHours(16) });
+
             context.Showings.Add(new Showing { MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(23) });
             context.Showings.Add(new Showing { MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(23) });
             context.Showings.Add(new Showing { MovieId = 3, RoomId = 3, Start = DateTime.Today.AddHours(23) });
             context.Showings.Add(new Showing { MovieId = 4, RoomId = 4, Start = DateTime.Today.AddHours(23) });
             context.Showings.Add(new Showing { MovieId = 5, RoomId = 5, Start = DateTime.Today.AddHours(23) });
             context.Showings.Add(new Showing { MovieId = 6, RoomId = 6, Start = DateTime.Today.AddHours(23) });
+
+
+            // Add seats to room 1, 2, 3
+            foreach (int row in Enumerable.Range(1, 8))
+            {
+                foreach (int num in Enumerable.Range(1, 15))
+                {
+                    context.Seats.Add(new Seat { Room = room1, Number = num, Row = row });
+                    context.Seats.Add(new Seat { Room = room2, Number = num, Row = row });
+                    context.Seats.Add(new Seat { Room = room3, Number = num, Row = row });
+                }
+            }
+
+            // Add seats to room 4
+            foreach (int row in Enumerable.Range(1, 6))
+            {
+                foreach (int num in Enumerable.Range(1, 10))
+                {
+                    context.Seats.Add(new Seat { Room = room4, Number = num, Row = row });
+                }
+            }
+
+            // Add seats to room 5 and 6
+            foreach (int row in Enumerable.Range(1, 4))
+            {
+                int numSeats = row >= 2 ? 15 : 10;
+                foreach (int num in Enumerable.Range(1, numSeats))
+                {
+                    context.Seats.Add(new Seat { Room = room5, Number = num, Row = row });
+                    context.Seats.Add(new Seat { Room = room6, Number = num, Row = row });
+                }
+            }
         }
     }
 }
