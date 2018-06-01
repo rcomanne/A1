@@ -53,12 +53,13 @@ namespace CinemaTicketSystem.Domain.Migrations
             context.Showings.Add(new Showing { MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(16) });
             context.Showings.Add(new Showing { MovieId = 4, RoomId = 3, Start = DateTime.Today.AddHours(16) });
             context.Showings.Add(new Showing { MovieId = 6, RoomId = 4, Start = DateTime.Today.AddHours(16) });
-            context.Showings.Add(new Showing { MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(20) });
-            context.Showings.Add(new Showing { MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(20) });
-            context.Showings.Add(new Showing { MovieId = 3, RoomId = 3, Start = DateTime.Today.AddHours(20) });
-            context.Showings.Add(new Showing { MovieId = 4, RoomId = 4, Start = DateTime.Today.AddHours(20) });
-            context.Showings.Add(new Showing { MovieId = 5, RoomId = 5, Start = DateTime.Today.AddHours(20) });
-            context.Showings.Add(new Showing { MovieId = 6, RoomId = 6, Start = DateTime.Today.AddHours(20) });
+
+            context.Showings.Add(new Showing { MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(23) });
+            context.Showings.Add(new Showing { MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(23) });
+            context.Showings.Add(new Showing { MovieId = 3, RoomId = 3, Start = DateTime.Today.AddHours(23) });
+            context.Showings.Add(new Showing { MovieId = 4, RoomId = 4, Start = DateTime.Today.AddHours(23) });
+            context.Showings.Add(new Showing { MovieId = 5, RoomId = 5, Start = DateTime.Today.AddHours(23) });
+            context.Showings.Add(new Showing { MovieId = 6, RoomId = 6, Start = DateTime.Today.AddHours(23) });
 
 
             // Add seats to room 1, 2, 3
