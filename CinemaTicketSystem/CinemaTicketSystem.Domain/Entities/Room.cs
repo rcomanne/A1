@@ -16,6 +16,6 @@ namespace CinemaTicketSystem.Domain.Entities
 
         public virtual Location Location { get; set; }
 
-        public virtual IEnumerable<Showing> Showings { get; set; }
+        public virtual ICollection<Showing> Showings { get; set; }
     }
 }

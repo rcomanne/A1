@@ -13,6 +13,8 @@ namespace CinemaTicketSystem.Domain.Entities
 
         public int RoomId { get; set; }
 
+        public bool Is3D { get; set; }
+
         public virtual Movie Movie {get; set;}
 
         public virtual Room Room { get; set; }

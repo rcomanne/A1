@@ -75,6 +75,10 @@
     <Compile Include="Migrations\201805301903521_add_seats_migration.Designer.cs">
       <DependentUpon>201805301903521_add_seats_migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805311723070_Add Movie detail fields.cs" />
+    <Compile Include="Migrations\201805311723070_Add Movie detail fields.Designer.cs">
+      <DependentUpon>201805311723070_Add Movie detail fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805301903521_add_seats_migration.resx">
       <DependentUpon>201805301903521_add_seats_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805311723070_Add Movie detail fields.resx">
+      <DependentUpon>201805311723070_Add Movie detail fields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
