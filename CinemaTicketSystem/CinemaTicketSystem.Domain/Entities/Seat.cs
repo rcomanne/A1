@@ -11,7 +11,7 @@ namespace CinemaTicketSystem.Domain.Entities
     {
 
         [Index("IX_NumberRowRoom", 1)]
-        public virtual Room Room { get; set; }
+        public int RoomId { get; set; }
 
         [Index("IX_NumberRowRoom", 2)]
         public int Row { get; set; }
@@ -19,5 +19,13 @@ namespace CinemaTicketSystem.Domain.Entities
         [Index("IX_NumberRowRoom", 3)]
         public int Number { get; set; }
 
+        public virtual Room Room { get; set; }
+
+        public virtual ICollection<OrderSeat> OrderSeats { get; set; }
+
+        public Seat()
+        {
+            OrderSeats = new HashSet<OrderSeat>();
+        }
     }
 }

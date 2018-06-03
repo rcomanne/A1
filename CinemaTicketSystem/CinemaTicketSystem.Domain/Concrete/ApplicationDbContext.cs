@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Text;
 
 namespace CinemaTicketSystem.Domain.Concrete
@@ -19,5 +20,11 @@ namespace CinemaTicketSystem.Domain.Concrete
         public virtual DbSet<Showing> Showings { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Seat> Seats { get; set; }
+        public virtual DbSet<OrderSeat> OrderSeats { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
     }
 }

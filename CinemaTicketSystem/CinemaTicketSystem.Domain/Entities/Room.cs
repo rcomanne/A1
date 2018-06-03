@@ -17,5 +17,10 @@ namespace CinemaTicketSystem.Domain.Entities
         public virtual Location Location { get; set; }
 
         public virtual ICollection<Showing> Showings { get; set; }
+
+        public Room()
+        {
+            Showings = new HashSet<Showing>();
+        }
     }
 }
