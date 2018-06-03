@@ -134,7 +134,7 @@ namespace CinemaTicketSystem.Domain.Migrations
                 r => r.Name,
                 room6
             );
-
+            
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 1, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(13), Is3D = false });
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 2, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(13), Is3D = false });
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 3, MovieId = 2, RoomId = 3, Start = DateTime.Today.AddHours(13), Is3D = false });
@@ -155,6 +155,11 @@ namespace CinemaTicketSystem.Domain.Migrations
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 18, MovieId = 5, RoomId = 5, Start = DateTime.Today.AddHours(23), Is3D = false });
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 19, MovieId = 6, RoomId = 6, Start = DateTime.Today.AddHours(23), Is3D = false });
 
+            context.Orders.AddOrUpdate(
+                o => o.Id,
+                new Order { Id = 1, OrderNumber = 0000000001, ShowingId = context.Showings.Find(1).Id, NumberOfTickets = 2, TotalPrice = 17.0 },
+                new Order { Id = 2, OrderNumber = 0000000002, ShowingId = context.Showings.Find(2).Id, NumberOfTickets = 4, TotalPrice = 34.0 }
+            );
 
             // Add seats to room 1, 2, 3
             foreach (int row in Enumerable.Range(1, 8))

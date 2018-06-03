@@ -56,6 +56,7 @@
     <Compile Include="Concrete\EntityFrameworkRepository.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Movie.cs" />
+    <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Room.cs" />
     <Compile Include="Entities\Seat.cs" />
     <Compile Include="Entities\Showing.cs" />
@@ -70,6 +71,26 @@
     <Compile Include="Migrations\201805241451029_ExpandShowing.cs" />
     <Compile Include="Migrations\201805241451029_ExpandShowing.Designer.cs">
       <DependentUpon>201805241451029_ExpandShowing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805271104561_order init.cs" />
+    <Compile Include="Migrations\201805271104561_order init.Designer.cs">
+      <DependentUpon>201805271104561_order init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805271113219_order adjustment.cs" />
+    <Compile Include="Migrations\201805271113219_order adjustment.Designer.cs">
+      <DependentUpon>201805271113219_order adjustment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805311006156_order update.cs" />
+    <Compile Include="Migrations\201805311006156_order update.Designer.cs">
+      <DependentUpon>201805311006156_order update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805311010265_showingId added to order.cs" />
+    <Compile Include="Migrations\201805311010265_showingId added to order.Designer.cs">
+      <DependentUpon>201805311010265_showingId added to order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805311014467_order dbset.cs" />
+    <Compile Include="Migrations\201805311014467_order dbset.Designer.cs">
+      <DependentUpon>201805311014467_order dbset.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201805301903521_add_seats_migration.cs" />
     <Compile Include="Migrations\201805301903521_add_seats_migration.Designer.cs">
@@ -95,6 +116,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805241451029_ExpandShowing.resx">
       <DependentUpon>201805241451029_ExpandShowing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805271104561_order init.resx">
+      <DependentUpon>201805271104561_order init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805271113219_order adjustment.resx">
+      <DependentUpon>201805271113219_order adjustment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805311006156_order update.resx">
+      <DependentUpon>201805311006156_order update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805311010265_showingId added to order.resx">
+      <DependentUpon>201805311010265_showingId added to order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805311014467_order dbset.resx">
+      <DependentUpon>201805311014467_order dbset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805301903521_add_seats_migration.resx">
       <DependentUpon>201805301903521_add_seats_migration.cs</DependentUpon>
