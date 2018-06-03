@@ -6,3 +6,23 @@
 dl.row > dd {
     margin: 0;
 }
+
+.seat input {
+    display: none;
+    visibility: hidden;
+}
+
+.seat label {
+    display: block;
+    width: auto;
+    height: 50px;
+
+    background-color: blue;
+    margin: 10px;
+}
+.seat.taken label {
+    background-color: red;
+}
+.seat input:checked + label {
+    background-color: green;
+}

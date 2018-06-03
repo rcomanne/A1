@@ -58,6 +58,7 @@
     <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Room.cs" />
+    <Compile Include="Entities\OrderSeat.cs" />
     <Compile Include="Entities\Seat.cs" />
     <Compile Include="Entities\Showing.cs" />
     <Compile Include="Migrations\201805231633284_init.cs" />
@@ -72,21 +73,13 @@
     <Compile Include="Migrations\201805241451029_ExpandShowing.Designer.cs">
       <DependentUpon>201805241451029_ExpandShowing.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805311006156_order update.cs" />
-    <Compile Include="Migrations\201805311006156_order update.Designer.cs">
-      <DependentUpon>201805311006156_order update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805311010265_showingId added to order.cs" />
-    <Compile Include="Migrations\201805311010265_showingId added to order.Designer.cs">
-      <DependentUpon>201805311010265_showingId added to order.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805301903521_add_seats_migration.cs" />
-    <Compile Include="Migrations\201805301903521_add_seats_migration.Designer.cs">
-      <DependentUpon>201805301903521_add_seats_migration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201805311723070_Add Movie detail fields.cs" />
     <Compile Include="Migrations\201805311723070_Add Movie detail fields.Designer.cs">
       <DependentUpon>201805311723070_Add Movie detail fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806021344261_Add Orders and Seats.cs" />
+    <Compile Include="Migrations\201806021344261_Add Orders and Seats.Designer.cs">
+      <DependentUpon>201806021344261_Add Orders and Seats.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,17 +98,11 @@
     <EmbeddedResource Include="Migrations\201805241451029_ExpandShowing.resx">
       <DependentUpon>201805241451029_ExpandShowing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805311006156_order update.resx">
-      <DependentUpon>201805311006156_order update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805311010265_showingId added to order.resx">
-      <DependentUpon>201805311010265_showingId added to order.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805301903521_add_seats_migration.resx">
-      <DependentUpon>201805301903521_add_seats_migration.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805311723070_Add Movie detail fields.resx">
       <DependentUpon>201805311723070_Add Movie detail fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806021344261_Add Orders and Seats.resx">
+      <DependentUpon>201806021344261_Add Orders and Seats.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
