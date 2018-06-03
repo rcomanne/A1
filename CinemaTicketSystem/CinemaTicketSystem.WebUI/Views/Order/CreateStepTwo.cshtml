@@ -8,7 +8,9 @@
 @using (Html.BeginForm("CreateStepThree", "Order", new { id = Model.Id }))
 {
     @Html.AntiForgeryToken()
-    <input type="hidden" name="TicketsChildren" value="@ViewBag.TicketsChildren" />
+    <input type="hidden" id="TicketsChildren" name="TicketsChildren" value="@ViewBag.TicketsChildren" />
+    <input type="hidden" id="TicketsAdults" name="TicketsAdults" value="@ViewBag.TicketsAdults" />
+    <button type="button" id="AutoSelect" class="btn btn-primary">Selecteer stoelen voor mij</button>
 
     for (int i = 0; i < ViewBag.Room.GetLength(0); i++)
     {
@@ -38,4 +40,80 @@
     }
 
     <button type="submit" class="btn btn-primary">Naar betalen</button>
+}
+
+@section scripts {
+    
+    <script>
+
+        var seats = undefined;
+        var takenSeats = undefined;
+
+        var automaticallySelectSeatsOptions = { "inRow": 1, "random": 2 };
+        var prefferedSelectOption = automaticallySelectSeatsOptions.inRow;
+
+        function automaticallySelectSeats(seatAmount, selectOption) {
+            selectOption = selectOption || prefferedSelectOption;
+
+            var seatsFound = false;
+
+            var assigned = 0;
+            for (var index = 0; index < seats.length; index++) {
+
+                // Check if there are seats available that are next to each other
+                if (selectOption == automaticallySelectSeatsOptions.inRow) {
+                    var availableSeats = [];
+
+                    for (var i = 0; i < seatAmount; i++) {
+                        var seat = $(seats[i + index]);
+                        availableSeats.push(seat);
+
+                        if (seat.hasClass('taken')) {
+                            availableSeats = [];
+                            break;
+                        }
+                    }
+
+                    if (availableSeats.length) {
+                        console.log(availableSeats);
+                        seatsFound = true;
+                        $(availableSeats).each(function (index, seat) {
+                            seat.find("input:checkbox").attr('checked', true);
+                        });
+                        break;
+                    }
+
+                } else if (selectOption == automaticallySelectSeatsOptions.random) {
+                    if (!$(seats[index]).hasClass('taken')) {
+                        assigned++;
+                        $(seats[index]).find("input:checkbox").attr('checked', true);
+                    }
+
+                    if (assigned == seatAmount) {
+                        seatsFound = true;
+                        break;
+                    }
+                }
+            }
+            if (!seatsFound && selectOption == 1) {
+                automaticallySelectSeats(seatAmount, automaticallySelectSeatsOptions.random);
+            }
+        }
+
+        $("#AutoSelect").click(function () {
+            var ticketsAdults = parseInt($('#TicketsAdults').val());
+            var ticketsChildren = parseInt($('#TicketsChildren').val());
+            seats = $(".seat");
+            takenSeats = $(".taken");
+
+            var seatAmount = ticketsAdults + ticketsChildren;
+            if ((takenSeats.length + seatAmount) > seats.length) {
+                alert("Deze voorstelling is uitverkocht!");
+                return;
+            }
+            automaticallySelectSeats(seatAmount);
+            console.log("Automatisch ticktes reserveren voor " + seatAmount + " personen");
+        });
+    </script>
+    
 }
