@@ -1,0 +1,44 @@
+﻿@model CinemaTicketSystem.Domain.Entities.Order
+
+@{
+    ViewBag.Title = "Uw ticket(s)";
+}
+
+<h2>Uw ticket(s)</h2>
+
+<div>
+    <h4>Bestelling nr. @Model.OrderNumber voor <!-- @Model.Showing.Movie.Name --></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Zaal
+        </dt>
+        <dd>
+            <!-- @Model.Showing.Room.Name -->
+        </dd>
+            
+        <dt>
+            Aantal tickets
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfTickets)
+        </dd>
+
+        <dt>
+            Totaal prijs
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+
+        <dt>
+            Besteld op
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+    </dl>
+</div>
