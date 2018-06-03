@@ -129,11 +129,6 @@ namespace CinemaTicketSystem.Domain.Migrations
                     ImageUrl = "https://www.vuecinemas.nl/thumb?w=268&f=jpg&src=userfiles/image/movies/37091117_94684.jpg&alt=img/movie_placeholder.png"
                 }
             );
-
-            context.Rooms.AddOrUpdate(
-                r => r.Name,
-                room6
-            );
             
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 1, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(13), Is3D = false });
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 2, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(13), Is3D = false });
@@ -157,7 +152,7 @@ namespace CinemaTicketSystem.Domain.Migrations
 
             context.Orders.AddOrUpdate(
                 o => o.Id,
-                new Order { Id = 1, OrderNumber = 0000000001, ShowingId = context.Showings.Find(1).Id, NumberOfTickets = 2, TotalPrice = 17.0 },
+                new Order { Id = 1, OrderNumber = 0000001234, ShowingId = context.Showings.Find(1).Id, NumberOfTickets = 2, TotalPrice = 17.0 },
                 new Order { Id = 2, OrderNumber = 0000000002, ShowingId = context.Showings.Find(2).Id, NumberOfTickets = 4, TotalPrice = 34.0 }
             );
 

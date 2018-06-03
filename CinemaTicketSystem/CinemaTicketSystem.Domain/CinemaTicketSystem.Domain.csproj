@@ -100,6 +100,10 @@
     <Compile Include="Migrations\201805311723070_Add Movie detail fields.Designer.cs">
       <DependentUpon>201805311723070_Add Movie detail fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806031122443_order updates.cs" />
+    <Compile Include="Migrations\201806031122443_order updates.Designer.cs">
+      <DependentUpon>201806031122443_order updates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -137,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805311723070_Add Movie detail fields.resx">
       <DependentUpon>201805311723070_Add Movie detail fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806031122443_order updates.resx">
+      <DependentUpon>201806031122443_order updates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
