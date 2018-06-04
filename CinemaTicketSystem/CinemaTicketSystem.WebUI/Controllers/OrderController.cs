@@ -17,11 +17,7 @@ namespace WebUI.Controllers
             this.repo = repo;
         }
 
-        public ViewResult Create() {
-            return View();
-        }
-
-        // GET Index
+        // GET Home voor het invoeren van order nummer
         [HttpGet]
         public ViewResult Index() {
             return View();
@@ -32,6 +28,12 @@ namespace WebUI.Controllers
             return View(repo.GetById<Order>(id));
         }
 
+        [HttpPost]
+        public ActionResult GetOrder(int orderNumber) {
+            return Details(orderNumber);
+        }
+
+        [HttpGet]
         public ActionResult Details(int? id) {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

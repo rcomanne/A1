@@ -16,5 +16,7 @@ namespace CinemaTicketSystem.Domain.Entities {
         public double TotalPrice { get; set; }
 
         public int OrderNumber { get; set; }
+
+        public ICollection<Seat> Seats { get; set; }
     }
 }

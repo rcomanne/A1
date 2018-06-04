@@ -7,16 +7,27 @@
 <h2>Uw ticket(s)</h2>
 
 <div>
-    <h4>Bestelling nr. @Model.OrderNumber voor <!-- @Model.Showing.Movie.Name --></h4>
+    <h4>Bestelling nr. @Model.OrderNumber voor @Model.Showing.Movie.Name</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             Zaal
         </dt>
         <dd>
-            <!-- @Model.Showing.Room.Name -->
+            @Model.Showing.Room.Name
         </dd>
-            
+        <dt>
+            Stoelen
+        </dt>
+        <dd>
+            @Model.Seats
+        </dd>
+        <dt>
+            Tijd
+        </dt>
+        <dd>
+            @Model.Showing.Start
+        </dd>
         <dt>
             Aantal tickets
         </dt>
