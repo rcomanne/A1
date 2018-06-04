@@ -88,7 +88,7 @@ namespace WebUI.Controllers
             }
             repo.Save();
 
-            return RedirectToAction("Details", new { id = order.Id });
+            return View(showing);
         }
     }
 }
