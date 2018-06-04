@@ -91,5 +91,32 @@ namespace WebUI.Controllers
             return View(showing);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateStepFour(int? id, int ticketsChildren, int[] seats)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Showing showing = repo.GetById<Showing>(id);
+            if (showing == null)
+            {
+                return HttpNotFound();
+            }
+
+            Order order = new Order() { NumberOfTickets = seats.Count(), ShowingId = showing.Id };
+            repo.Create<Order>(order);
+            repo.Save();
+
+            foreach (int seatId in seats)
+            {
+                repo.Create<OrderSeat>(new OrderSeat() { OrderId = order.Id, SeatId = seatId });
+            }
+            repo.Save();
+
+            return View(showing);
+        }
+
     }
 }

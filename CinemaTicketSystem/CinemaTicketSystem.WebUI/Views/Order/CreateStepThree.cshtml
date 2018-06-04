@@ -44,6 +44,9 @@
                 @Html.DisplayFor(model => model.Is3D)
             </dd>
         </dl>
-
+            <div class="btn-group" >
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary" style="margin-right: 20px;">Annuleer</a>
+                <a href="@Url.Action("CreateStepFour", "Order",new { id = Model.Id })" class="btn btn-primary">Reserveer</a>
+            </div>
     </div>
 </div>
