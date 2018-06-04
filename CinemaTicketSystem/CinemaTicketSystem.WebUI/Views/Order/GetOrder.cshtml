@@ -11,6 +11,12 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            Locatie
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Showing.Room.Location.Name)
+        </dd>
+        <dt>
             Zaal
         </dt>
         <dd>
@@ -20,7 +26,7 @@
             Stoelen
         </dt>
         <dd>
-            TBD
+            @Model.OrderSeats
         </dd>
         <dt>
             Tijd

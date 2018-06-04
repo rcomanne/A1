@@ -11,6 +11,12 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            Locatie
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Showing.Room.Location.Name)
+        </dd>
+        <dt>
             Zaal
         </dt>
         <dd>
@@ -20,7 +26,7 @@
             Stoelen
         </dt>
         <dd>
-            @Model.Seats
+            @Model.OrderSeats
         </dd>
         <dt>
             Tijd
@@ -37,10 +43,6 @@
         <dt>Totaal prijs:</dt>
         <dd>
             € @Html.DisplayFor(model => model.TotalPrice)
-        </dd>
-        <dt>Locatie:</dt>
-        <dd>
-            @Html.DisplayFor(model => model.Showing.Room.Location.Name)
         </dd>
         <dt>Zaal:</dt>
         <dd>
