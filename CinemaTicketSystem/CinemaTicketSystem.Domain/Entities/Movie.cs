@@ -37,5 +37,10 @@ namespace CinemaTicketSystem.Domain.Entities
         public DateTime LastShowDate { get; set; }
 
         public virtual ICollection<Showing> Showings { get; set; }
+
+        public Movie()
+        {
+            Showings = new HashSet<Showing>();
+        }
     }
 }

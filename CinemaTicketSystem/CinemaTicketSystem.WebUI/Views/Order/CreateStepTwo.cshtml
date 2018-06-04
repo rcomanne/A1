@@ -1,0 +1,41 @@
+﻿@using CinemaTicketSystem.Domain.Entities
+@model Showing
+
+@{
+    ViewBag.Title = "CreateStepTwo";
+}
+
+@using (Html.BeginForm("CreateStepThree", "Order", new { id = Model.Id }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="TicketsChildren" value="@ViewBag.TicketsChildren" />
+
+    for (int i = 0; i < ViewBag.Room.GetLength(0); i++)
+    {
+        <div class="d-flex justify-content-center">
+        @for (int j = 0; j < ViewBag.Room.GetLength(1); j++)
+        {
+             Seat seat = ViewBag.Room[i, j];
+             if (seat == null)
+             {
+                 continue;
+             }
+             if (Array.IndexOf(ViewBag.TakenSeats, seat.Id) > -1)
+             {
+                 <div class="seat flex-fill taken">
+                     <label></label>
+                 </div>
+             }
+             else
+             {
+                 <div class="seat flex-fill">
+                     <input type="checkbox" name="Seats[]" value="@seat.Id" id="seat-@seat.Id" />
+                     <label for="seat-@seat.Id"></label>
+                 </div>
+             }
+        }
+       </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Naar betalen</button>
+}

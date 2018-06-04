@@ -17,6 +17,11 @@ namespace CinemaTicketSystem.Domain.Entities {
 
         public int OrderNumber { get; set; }
 
-        public ICollection<Seat> Seats { get; set; }
+        public virtual ICollection<OrderSeat> OrderSeats { get; set; }
+
+        public Order()
+        {
+            OrderSeats = new HashSet<OrderSeat>();
+        }
     }
 }

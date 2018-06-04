@@ -6,14 +6,14 @@ namespace CinemaTicketSystem.Domain.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class orderinit : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
+    public sealed partial class AddOrdersandSeats : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(orderinit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddOrdersandSeats));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805271104561_order init"; }
+            get { return "201806021344261_Add Orders and Seats"; }
         }
         
         string IMigrationMetadata.Source

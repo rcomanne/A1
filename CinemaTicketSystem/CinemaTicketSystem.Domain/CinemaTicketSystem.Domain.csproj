@@ -58,6 +58,7 @@
     <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Room.cs" />
+    <Compile Include="Entities\OrderSeat.cs" />
     <Compile Include="Entities\Seat.cs" />
     <Compile Include="Entities\Showing.cs" />
     <Compile Include="Migrations\201805231633284_init.cs" />
@@ -108,6 +109,10 @@
     <Compile Include="Migrations\201806041548011_seats added to order.Designer.cs">
       <DependentUpon>201806041548011_seats added to order.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806021344261_Add Orders and Seats.cs" />
+    <Compile Include="Migrations\201806021344261_Add Orders and Seats.Designer.cs">
+      <DependentUpon>201806021344261_Add Orders and Seats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -151,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806041548011_seats added to order.resx">
       <DependentUpon>201806041548011_seats added to order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806021344261_Add Orders and Seats.resx">
+      <DependentUpon>201806021344261_Add Orders and Seats.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
