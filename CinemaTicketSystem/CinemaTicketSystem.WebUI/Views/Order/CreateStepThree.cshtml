@@ -26,11 +26,24 @@
                 @Html.DisplayFor(model => model.Start)
             </dd>
             <dt>
+                Duur film
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Movie.LengthInMinutes) Minuten
+            </dd>
+            <dt>
+                Taal
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Movie.SpokenLanguage)
+            </dd>
+            <dt>
                 @Html.DisplayNameFor(model => model.Is3D)
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.Is3D)
             </dd>
         </dl>
+
     </div>
 </div>
