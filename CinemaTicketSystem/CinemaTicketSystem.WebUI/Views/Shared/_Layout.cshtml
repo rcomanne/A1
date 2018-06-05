@@ -30,14 +30,16 @@
         @RenderBody()
     </div>
 
-    <footer class="container">
-        @using (Html.BeginForm("Signup", "NewsletterSignup", FormMethod.Post, new { @class = "form-inline" }))
-        {
-            @Html.AntiForgeryToken()
-            <label class="mb-2 mr-sm-2" for="NewsletterSignupEmail">Schrijf je in voor de nieuwsbrief: </label>
-            <input type="email" class="form-control mb-2 mr-sm-2" id="NewsletterSignupEmail" placeholder="E-mailadres" name="Email">
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>
-        }
+    <footer>
+        <div class="container">
+            @using (Html.BeginForm("Signup", "NewsletterSignup", FormMethod.Post, new { @class = "form-inline" }))
+            {
+                @Html.AntiForgeryToken()
+                <label class="mb-2 mr-sm-2" for="NewsletterSignupEmail">Schrijf je in voor de nieuwsbrief: </label>
+                <input type="email" class="form-control mb-2 mr-sm-2" id="NewsletterSignupEmail" placeholder="E-mailadres" name="Email">
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            }
+        </div>
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
