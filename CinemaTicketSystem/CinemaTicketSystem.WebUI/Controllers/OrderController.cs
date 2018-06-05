@@ -88,12 +88,14 @@ namespace WebUI.Controllers
             }
             repo.Save();
 
+            ViewBag.ShowingID = id;
+
             return View(order);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateStepFour(int? id, int ticketsChildren, int[] seats)
+        public ActionResult CreateStepFour(int id)
         {
             if (id == null)
             {
