@@ -184,7 +184,7 @@ namespace CinemaTicketSystem.Domain.Migrations
             // Add seats to room 5 and 6
             foreach (int row in Enumerable.Range(1, 4))
             {
-                int numSeats = row >= 2 ? 15 : 10;
+                int numSeats = row > 2 ? 10 : 15;
                 foreach (int num in Enumerable.Range(1, numSeats))
                 {
                     context.Seats.Add(new Seat { Room = room5, Number = num, Row = row });
