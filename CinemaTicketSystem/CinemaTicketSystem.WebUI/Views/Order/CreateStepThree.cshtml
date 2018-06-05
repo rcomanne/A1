@@ -1,5 +1,5 @@
 ﻿@using CinemaTicketSystem.Domain.Entities
-@model CinemaTicketSystem.Domain.Entities.Showing
+@model CinemaTicketSystem.Domain.Entities.Order
 @{
     ViewBag.Title = "CreateStepThree";
 }
@@ -14,55 +14,62 @@
                 Filmnaam
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Movie.Name)
+                @Html.DisplayFor(model => model.Showing.Movie.Name)
             </dd>
             <dt>
                 Zaalnummer
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Room.Name)
+                @Html.DisplayFor(model => model.Showing.Room.LocationId)
             </dd>
             <dt>
                 Begintijd film
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Start)
+                @Html.DisplayFor(model => model.Showing.Start)
             </dd>
             <dt>
                 Duur film
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Movie.LengthInMinutes) Minuten
+                @Html.DisplayFor(model => model.Showing.Movie.LengthInMinutes) Minuten
             </dd>
             <dt>
                 Taal
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Movie.SpokenLanguage)
+                @Html.DisplayFor(model => model.Showing.Movie.SpokenLanguage)
             </dd>
             <dt>
                 Film in 3D?
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Is3D)
+                @Html.DisplayFor(model => model.Showing.Is3D)
             </dd>
             <dt>
                 Rolstoeltoegankelijk?
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Room.WheelchairAccesible)
+                @Html.DisplayFor(model => model.Showing.Room.WheelchairAccesible)
             </dd>
             <dt>
                 Aantal tickets
             </dt>
             <dd>
+                @Html.DisplayFor(model => model.NumberOfTickets)
 
+            </dd>
+            <dt>
+                Ordernummer
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OrderNumber)
             </dd>
             <dt>
                 Totaalprijs
             </dt>
             <dd>
-                   
+                @Html.DisplayFor(model => model.TotalPrice)
             </dd>
             
         </dl>
