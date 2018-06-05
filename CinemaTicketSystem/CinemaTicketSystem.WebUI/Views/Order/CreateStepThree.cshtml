@@ -1,8 +1,11 @@
-﻿@model CinemaTicketSystem.Domain.Entities.Showing
+﻿@using CinemaTicketSystem.Domain.Entities
+@model CinemaTicketSystem.Domain.Entities.Showing
 @{
     ViewBag.Title = "CreateStepThree";
 }
-<h1 text-center>Betalingsbestiging</h1>
+<div style="text-align: center">
+<h1>Betalingsbevestiging</h1>
+</div>
 <hr />
 <div class="card text-center">
     <div class="card-body">
@@ -38,11 +41,30 @@
                 @Html.DisplayFor(model => model.Movie.SpokenLanguage)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.Is3D)
+                Film in 3D?
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.Is3D)
             </dd>
+            <dt>
+                Rolstoeltoegankelijk?
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Room.WheelchairAccesible)
+            </dd>
+            <dt>
+                Aantal tickets
+            </dt>
+            <dd>
+
+            </dd>
+            <dt>
+                Totaalprijs
+            </dt>
+            <dd>
+                   
+            </dd>
+            
         </dl>
             <div class="btn-group" >
                 <a href="@Url.Action("Index", "Home")" class="btn btn-primary" style="margin-right: 20px;">Annuleer</a>

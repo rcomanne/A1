@@ -105,16 +105,6 @@ namespace WebUI.Controllers
                 return HttpNotFound();
             }
 
-            Order order = new Order() { NumberOfTickets = seats.Count(), ShowingId = showing.Id };
-            repo.Create<Order>(order);
-            repo.Save();
-
-            foreach (int seatId in seats)
-            {
-                repo.Create<OrderSeat>(new OrderSeat() { OrderId = order.Id, SeatId = seatId });
-            }
-            repo.Save();
-
             return View(showing);
         }
 
