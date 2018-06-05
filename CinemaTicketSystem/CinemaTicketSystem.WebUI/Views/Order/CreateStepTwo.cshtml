@@ -77,7 +77,7 @@
                     if (availableSeats.length) {
                         seatsFound = true;
                         $(availableSeats).each(function (index, seat) {
-                            seat.find("input:checkbox").attr('checked', true);
+                            seat.find("input:checkbox").prop('checked', true);
                         });
                         break;
                     }
@@ -85,7 +85,7 @@
                 } else if (selectOption == automaticallySelectSeatsOptions.random) {
                     if (!$(seats[index]).hasClass('taken')) {
                         assigned++;
-                        $(seats[index]).find("input:checkbox").attr('checked', true);
+                        $(seats[index]).find("input:checkbox").prop('checked', true);
                     }
 
                     if (assigned == seatAmount) {
@@ -197,6 +197,10 @@
                 alert("Deze voorstelling is uitverkocht!");
                 return;
             }
+            
+            $('.seat').each(function (i, seat) {
+                $(seat).find("input:checkbox").prop('checked', false);
+            });
 
             automaticallySelectSeats(seatAmount);
             console.log("Automatisch ticktes reserveren voor " + seatAmount + " personen");
