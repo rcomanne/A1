@@ -131,7 +131,12 @@ namespace CinemaTicketSystem.Domain.Migrations
             );
 
             context.Rooms.AddOrUpdate(
-                r => r.Name,
+                r => r.Id,
+                room1,
+                room2,
+                room3,
+                room4,
+                room5,
                 room6
             );
             

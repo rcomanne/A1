@@ -38,6 +38,13 @@ namespace CinemaTicketSystem.WebUI.Infrastructure
             kernel.Bind<IRepository>()
                 .To<EntityFrameworkRepository<ApplicationDbContext>>()
                 .InRequestScope();
+
+            kernel.Bind<IMailer>()
+                .To<SmtpMailer>()
+                .InRequestScope();
+
+            kernel.Bind<ITokenGenerator>()
+                .To<RandomTokenGenerator>();
         }
     }
 }

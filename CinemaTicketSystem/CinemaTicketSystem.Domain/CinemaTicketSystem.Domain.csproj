@@ -48,14 +48,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IEntity.cs" />
+    <Compile Include="Abstract\IMailer.cs" />
     <Compile Include="Abstract\IReadOnlyRepository.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\ITokenGenerator.cs" />
     <Compile Include="Concrete\ApplicationDbContext.cs" />
     <Compile Include="Concrete\Entity.cs" />
     <Compile Include="Concrete\EntityFrameworkReadOnlyRepository.cs" />
     <Compile Include="Concrete\EntityFrameworkRepository.cs" />
+    <Compile Include="Concrete\RandomTokenGenerator.cs" />
+    <Compile Include="Concrete\SmtpMailer.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Movie.cs" />
+    <Compile Include="Entities\NewsletterSignup.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Room.cs" />
     <Compile Include="Entities\OrderSeat.cs" />
@@ -81,6 +86,10 @@
     <Compile Include="Migrations\201806021344261_Add Orders and Seats.Designer.cs">
       <DependentUpon>201806021344261_Add Orders and Seats.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806041635568_Add Newsletter Signup.cs" />
+    <Compile Include="Migrations\201806041635568_Add Newsletter Signup.Designer.cs">
+      <DependentUpon>201806041635568_Add Newsletter Signup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806021344261_Add Orders and Seats.resx">
       <DependentUpon>201806021344261_Add Orders and Seats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041635568_Add Newsletter Signup.resx">
+      <DependentUpon>201806041635568_Add Newsletter Signup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
