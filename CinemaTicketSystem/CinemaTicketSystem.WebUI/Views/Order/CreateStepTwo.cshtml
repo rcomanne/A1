@@ -8,11 +8,13 @@
 @using (Html.BeginForm("CreateStepThree", "Order", new { id = Model.Id }))
 {
     @Html.AntiForgeryToken()
-    <input type="hidden" name="TicketsChildren" value="@ViewBag.TicketsChildren" />
+    <input type="hidden" id="TicketsChildren" name="TicketsChildren" value="@ViewBag.TicketsChildren" />
+    <input type="hidden" id="TicketsAdults" name="TicketsAdults" value="@ViewBag.TicketsAdults" />
+    <button type="button" id="AutoSelect" class="btn btn-primary">Selecteer stoelen voor mij</button>
 
     for (int i = 0; i < ViewBag.Room.GetLength(0); i++)
     {
-        <div class="d-flex justify-content-center">
+        <div class="d-flex seats-row justify-content-center">
         @for (int j = 0; j < ViewBag.Room.GetLength(1); j++)
         {
              Seat seat = ViewBag.Room[i, j];
@@ -38,4 +40,167 @@
     }
 
     <button type="submit" class="btn btn-primary">Naar betalen</button>
+}
+
+@section scripts {
+    
+    <script>
+
+        var seats = undefined;
+        var takenSeats = undefined;
+
+        var automaticallySelectSeatsOptions = { "inRow": 1, "random": 2 };
+        var prefferedSelectOption = automaticallySelectSeatsOptions.inRow;
+
+        function automaticallySelectSeats(seatAmount, selectOption) {
+            selectOption = selectOption || prefferedSelectOption;
+
+            var seatsFound = false;
+
+            var assigned = 0;
+            for (var index = 0; index < seats.length; index++) {
+
+                // Check if there are seats available that are next to each other
+                if (selectOption == automaticallySelectSeatsOptions.inRow) {
+                    var availableSeats = [];
+
+                    for (var i = 0; i < seatAmount; i++) {
+                        var seat = $(seats[i + index]);
+                        availableSeats.push(seat);
+
+                        if (seat.hasClass('taken')) {
+                            availableSeats = [];
+                            break;
+                        }
+                    }
+
+                    if (availableSeats.length) {
+                        seatsFound = true;
+                        $(availableSeats).each(function (index, seat) {
+                            seat.find("input:checkbox").attr('checked', true);
+                        });
+                        break;
+                    }
+
+                } else if (selectOption == automaticallySelectSeatsOptions.random) {
+                    if (!$(seats[index]).hasClass('taken')) {
+                        assigned++;
+                        $(seats[index]).find("input:checkbox").attr('checked', true);
+                    }
+
+                    if (assigned == seatAmount) {
+                        seatsFound = true;
+                        break;
+                    }
+                }
+            }
+            if (!seatsFound && selectOption == 1) {
+                // If there are no seats available for the preffered select option, select random seats
+                automaticallySelectSeats(seatAmount, automaticallySelectSeatsOptions.random);
+            }
+        }
+
+        function predefinedSeatsOrder(seats) {
+            // The seats will be divided into 6 sections: A, B, C, D, E, F
+            //           |           |           |
+            //    B ↑    |    A ↑    |    C ↑    |
+            //           |           |           |
+            //-----------|-----------|-----------|
+            //           |           |           |
+            //    E ↓    |    D  ↓   |    F ↓    |
+            //           |           |           |
+
+            var sections = {
+                'B': [], 'A': [], 'C': [],
+                'E': [], 'D': [], 'F': []
+            };
+
+            var sectionKeys = Object.keys(sections);
+            var seatRows = $('.seats-row');
+
+            seatRows.each(function (index, row) {
+
+                var topRow = Math.floor(seatRows.length / 2);
+
+                var seats = $(row).children();
+                var offset = Math.ceil(seats.length / 3);
+
+                var curSection = 0;
+
+                if (index >= topRow) {
+                    curSection += 3;
+                }
+
+                seats.each(function (index, seat) {
+                    var curPos = index+1;
+
+                    sections[sectionKeys[curSection]].push(seat);
+
+                    if ((curPos % offset) == 0) {
+                        curSection++;
+                    }
+                    
+                });
+
+            });
+
+            sections.A.reverse();
+            sections.B.reverse();
+            sections.C.reverse();
+
+            return sections;
+        }
+
+        function flattenObject(obj) {
+            var array = [];
+
+            for (var key in obj) {
+                if (!obj.hasOwnProperty(key)) continue;
+
+                for (var i = 0; i < obj[key].length; i++) {
+                    array.push(obj[key][i]);
+                }
+            }
+
+            return array;
+        }
+
+        var sortObjectByKey = function (obj) {
+            var keys = [];
+            var sorted_obj = {};
+
+            for (var key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    keys.push(key);
+                }
+            }
+
+            // sort keys
+            keys.sort();
+
+            // create new array based on Sorted Keys
+            jQuery.each(keys, function (i, key) {
+                sorted_obj[key] = obj[key];
+            });
+
+            return sorted_obj;
+        };
+
+        $("#AutoSelect").click(function () {
+            var ticketsAdults = parseInt($('#TicketsAdults').val());
+            var ticketsChildren = parseInt($('#TicketsChildren').val());
+            seats = flattenObject(sortObjectByKey(predefinedSeatsOrder($('.seat'))));
+            takenSeats = $(".taken");
+
+            var seatAmount = ticketsAdults + ticketsChildren;
+            if ((takenSeats.length + seatAmount) > seats.length) {
+                alert("Deze voorstelling is uitverkocht!");
+                return;
+            }
+
+            automaticallySelectSeats(seatAmount);
+            console.log("Automatisch ticktes reserveren voor " + seatAmount + " personen");
+        });
+    </script>
+    
 }
