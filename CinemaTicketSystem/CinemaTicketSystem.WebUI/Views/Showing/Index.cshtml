@@ -20,7 +20,7 @@
                             <dt class="col-4">Duur:</dt>
                             <dd class="col-8">@showing.Movie.LengthInMinutes.ToString() minuten</dd>
                             <dt class="col-4">Prijs:</dt>
-                            <dd class="col-8"></dd>
+                            <dd class="col-8">&euro; @string.Format("{0:N2}", ViewBag.PriceCalculator.CalculatePrice(showing))</dd>
                             <dt class="col-4">Zaal:</dt>
                             <dd class="col-8">@showing.Room.Name</dd>
                         </dl>

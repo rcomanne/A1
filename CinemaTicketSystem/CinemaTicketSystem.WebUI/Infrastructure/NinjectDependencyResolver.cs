@@ -45,6 +45,9 @@ namespace CinemaTicketSystem.WebUI.Infrastructure
 
             kernel.Bind<ITokenGenerator>()
                 .To<RandomTokenGenerator>();
+
+            kernel.Bind<IPriceCalculator>()
+                .To<PriceCalculator>();
         }
     }
 }

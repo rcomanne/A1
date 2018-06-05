@@ -12,14 +12,20 @@ namespace WebUI.Controllers
     {
         private IRepository repo;
 
-        public ShowingController(IRepository repo)
+        private IPriceCalculator priceCalculator;
+
+        public ShowingController(IRepository repo, IPriceCalculator priceCalculator)
         {
             this.repo = repo;
+            this.priceCalculator = priceCalculator;
         }
 
         public ViewResult Index()
         {
             IEnumerable<Showing> showings = repo.Get<Showing>(s => s.Start >= DateTime.Now, q => q.OrderBy(s => s.Start));
+
+            ViewBag.PriceCalculator = priceCalculator;
+
             return View(showings);
         }
     }
