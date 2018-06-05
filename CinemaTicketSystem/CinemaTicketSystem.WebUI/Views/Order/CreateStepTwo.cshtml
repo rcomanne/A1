@@ -116,8 +116,6 @@
             };
 
             var sectionKeys = Object.keys(sections);
-            console.log(sectionKeys);
-
             var seatRows = $('.seats-row');
 
             seatRows.each(function (index, row) {
@@ -145,6 +143,10 @@
                 });
 
             });
+
+            sections.A.reverse();
+            sections.B.reverse();
+            sections.C.reverse();
 
             return sections;
         }
@@ -188,7 +190,6 @@
             var ticketsAdults = parseInt($('#TicketsAdults').val());
             var ticketsChildren = parseInt($('#TicketsChildren').val());
             seats = flattenObject(sortObjectByKey(predefinedSeatsOrder($('.seat'))));
-            console.log(seats);
             takenSeats = $(".taken");
 
             var seatAmount = ticketsAdults + ticketsChildren;
@@ -196,8 +197,6 @@
                 alert("Deze voorstelling is uitverkocht!");
                 return;
             }
-
-            // TODO: Sort the seats so that 
 
             automaticallySelectSeats(seatAmount);
             console.log("Automatisch ticktes reserveren voor " + seatAmount + " personen");
