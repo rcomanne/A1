@@ -14,7 +14,7 @@ namespace CinemaTicketSystem.Domain.Concrete
         public SmtpClient GetClient()
         {
             SmtpClient client = new SmtpClient("smtp.mailtrap.io", 2525);
-            client.Credentials = new NetworkCredential("1522cd9163e70d", "d7cce4a80f4dff");
+            client.Credentials = new NetworkCredential("955a43d3494f7e", "32033d8905bd14");
             client.EnableSsl = true;
 
             return client;

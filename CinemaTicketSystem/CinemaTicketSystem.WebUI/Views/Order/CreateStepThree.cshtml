@@ -1,0 +1,86 @@
+﻿@using CinemaTicketSystem.Domain.Entities
+@model CinemaTicketSystem.Domain.Entities.Order
+@{
+    ViewBag.Title = "CreateStepThree";
+}
+<div style="text-align: center">
+    <h1>Betalingsbevestiging</h1>
+</div>
+<hr />
+@using (Html.BeginForm("CreateStepFour", "Order", new { id = ViewBag.ShowingID }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="OrderId" value="@ViewBag.OrderID" />
+    <div class="card text-center">
+        <div class="card-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    Filmnaam
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Showing.Movie.Name)
+                </dd>
+                <dt>
+                    Zaalnummer
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Showing.Room.LocationId)
+                </dd>
+                <dt>
+                    Begintijd film
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Showing.Start)
+                </dd>
+                <dt>
+                    Duur film
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Showing.Movie.LengthInMinutes) Minuten
+                </dd>
+                <dt>
+                    Taal
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Showing.Movie.SpokenLanguage)
+                </dd>
+                <dt>
+                    Film in 3D?
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Showing.Is3D)
+                </dd>
+                <dt>
+                    Rolstoeltoegankelijk?
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Showing.Room.WheelchairAccesible)
+                </dd>
+                <dt>
+                    Aantal tickets
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NumberOfTickets)
+
+                </dd>
+                <dt>
+                    Ordernummer
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OrderNumber)
+                </dd>
+                <dt>
+                    Totaalprijs
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TotalPrice)
+                </dd>
+
+            </dl>
+            <div class="btn-group">
+                <a href="@Url.Action("Index", "Showing")" class="btn btn-primary" style="margin-right: 20px;">Annuleer</a>
+                <button class="btn btn-primary" type="submit">Betaal</button>
+            </div>
+        </div>
+    </div>
+}

@@ -1,9 +1,14 @@
 ﻿using CinemaTicketSystem.Domain.Abstract;
 using CinemaTicketSystem.Domain.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
+using System.Runtime.Remoting;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,9 +19,12 @@ namespace WebUI.Controllers
         private IRepository repo;
         private IPriceCalculator priceCalculator;
 
-        public OrderController(IRepository repo, IPriceCalculator priceCalculator)
+        private IMailer mailer;
+
+        public OrderController(IRepository repo, IMailer mailer, IPriceCalculator priceCalculator)
         {
             this.repo = repo;
+            this.mailer = mailer;
             this.priceCalculator = priceCalculator;
         }
 
@@ -26,6 +34,7 @@ namespace WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Showing showing = repo.GetById<Showing>(id);
             if (showing == null)
             {
@@ -43,18 +52,21 @@ namespace WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Showing showing = repo.GetById<Showing>(id);
             if (showing == null)
             {
                 return HttpNotFound();
             }
 
-            IEnumerable<Seat> seats = repo.Get<Seat>(s => s.RoomId == showing.RoomId, q => q.OrderBy(s => s.Row).OrderBy(s => s.Number));
+            IEnumerable<Seat> seats = repo.Get<Seat>(s => s.RoomId == showing.RoomId,
+                q => q.OrderBy(s => s.Row).OrderBy(s => s.Number));
             Seat[,] room = new Seat[seats.Max(s => s.Row), seats.Max(s => s.Number)];
             foreach (var seat in seats)
             {
                 room[seat.Row - 1, seat.Number - 1] = seat;
             }
+
             IEnumerable<OrderSeat> takenSeats = repo.Get<OrderSeat>(os => os.Order.ShowingId == showing.Id);
             ViewBag.TakenSeats = takenSeats.Select(os => os.SeatId).ToArray();
             ViewBag.Room = room;
@@ -72,11 +84,13 @@ namespace WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Showing showing = repo.GetById<Showing>(id);
             if (showing == null)
             {
                 return HttpNotFound();
             }
+
 
             double price = 0;
             for (int i = 0; i < seats.Length; i++)
@@ -89,16 +103,76 @@ namespace WebUI.Controllers
                 ShowingId = showing.Id,
                 TotalPrice = price,
             };
+
             repo.Create<Order>(order);
             repo.Save();
 
             foreach (int seatId in seats)
             {
-                repo.Create<OrderSeat>(new OrderSeat() { OrderId = order.Id, SeatId = seatId });
+                repo.Create<OrderSeat>(new OrderSeat() {OrderId = order.Id, SeatId = seatId});
             }
+
             repo.Save();
 
-            return RedirectToAction("Details", new { id = order.Id });
+            ViewBag.ShowingID = id;
+            ViewBag.OrderID = order.Id;
+
+            return View(order);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateStepFour(int id, int orderId)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Showing showing = repo.GetById<Showing>(id);
+            if (showing == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.ShowingID = id;
+            ViewBag.OrderID = orderId;
+
+            return View(showing);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ThankYou(int id, string email, Order order)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Showing showing = repo.GetById<Showing>(id);
+            if (showing == null)
+            {
+                return HttpNotFound();
+            }
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add(new MailAddress(email));
+                mail.Body = String.Format($"Bedankt voor je bestelling! Uw ordernummer is: {order.OrderNumber}");
+                mail.IsBodyHtml = true;
+                mailer.Send(mail);
+            }
+            catch (Exception e)
+            {
+                Response.Write("Error " + e.ToString());
+            }
+
+            ViewBag.ShowingID = id;
+
+            return View(showing);
         }
         // GET Home voor het invoeren van order nummer
         [HttpGet]
@@ -113,14 +187,13 @@ namespace WebUI.Controllers
 
         [HttpPost]
         public ActionResult GetOrder(int orderNumber) {
-            IEnumerable<Order> orders = repo.Get<Order>(q => q.OrderNumber == orderNumber);
-            if (orders == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Order order = orders.ElementAt<Order>(0);
+            
+            Order order = repo.GetFirst<Order>(q => q.Id == orderNumber);
+
             if (order == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             order.Showing = repo.GetById<Showing>(order.ShowingId);
 
             return new Rotativa.ViewAsPdf(order);
