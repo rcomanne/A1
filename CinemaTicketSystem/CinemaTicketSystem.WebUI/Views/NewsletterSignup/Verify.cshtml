@@ -1,0 +1,18 @@
+﻿@model CinemaTicketSystem.Domain.Entities.NewsletterSignup
+@{
+    ViewBag.Title = "Verify";
+}
+
+@if (Model == null)
+{
+    <div class="alert alert-danger">
+        Deze code komt niet voor in ons systeem. Je kunt proberen om je nogmaals aan te melden voor de nieuwsbrief.
+    </div>
+}
+else
+{
+    <div class="alert alert-success">
+        Gefeliciteerd! Je ontvangt vanaf nu de nieuwsbrief in je inbox.
+    </div>
+}
+

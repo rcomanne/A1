@@ -21,6 +21,7 @@ namespace CinemaTicketSystem.Domain.Concrete
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Seat> Seats { get; set; }
         public virtual DbSet<OrderSeat> OrderSeats { get; set; }
+        public virtual DbSet<NewsletterSignup> NewsletterSignups { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

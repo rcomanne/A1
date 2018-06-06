@@ -161,6 +161,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\NewsletterSignupController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ShowingController.cs" />
     <Compile Include="Global.asax.cs">
@@ -271,6 +272,8 @@
     <Content Include="Views\Order\GetOrder.cshtml" />
     <Content Include="Views\Order\CreateStepOne.cshtml" />
     <Content Include="Views\Order\CreateStepTwo.cshtml" />
+    <Content Include="Views\NewsletterSignup\Signup.cshtml" />
+    <Content Include="Views\NewsletterSignup\Verify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

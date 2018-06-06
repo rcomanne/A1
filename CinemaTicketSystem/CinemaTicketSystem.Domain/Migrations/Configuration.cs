@@ -130,6 +130,16 @@ namespace CinemaTicketSystem.Domain.Migrations
                     ImageUrl = "https://www.vuecinemas.nl/thumb?w=268&f=jpg&src=userfiles/image/movies/37091117_94684.jpg&alt=img/movie_placeholder.png"
                 }
             );
+
+            context.Rooms.AddOrUpdate(
+                r => r.Id,
+                room1,
+                room2,
+                room3,
+                room4,
+                room5,
+                room6
+            );
             
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 1, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(13), Is3D = false });
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 2, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(13), Is3D = false });
@@ -174,7 +184,7 @@ namespace CinemaTicketSystem.Domain.Migrations
             // Add seats to room 5 and 6
             foreach (int row in Enumerable.Range(1, 4))
             {
-                int numSeats = row >= 2 ? 15 : 10;
+                int numSeats = row > 2 ? 10 : 15;
                 foreach (int num in Enumerable.Range(1, numSeats))
                 {
                     context.Seats.Add(new Seat { Room = room5, Number = num, Row = row });
