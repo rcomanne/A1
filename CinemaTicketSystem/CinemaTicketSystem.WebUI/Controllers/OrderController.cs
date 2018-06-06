@@ -12,10 +12,12 @@ namespace WebUI.Controllers
     public class OrderController : Controller
     {
         private IRepository repo;
+        private IPriceCalculator priceCalculator;
 
-        public OrderController(IRepository repo)
+        public OrderController(IRepository repo, IPriceCalculator priceCalculator)
         {
             this.repo = repo;
+            this.priceCalculator = priceCalculator;
         }
 
         public ActionResult CreateStepOne(int? id)
@@ -59,8 +61,6 @@ namespace WebUI.Controllers
             ViewBag.TicketsAdults = ticketsAdults;
             ViewBag.TicketsChildren = ticketsChildren;
 
-            //Get best seats as default.
-
             return View(showing);
         }
 
@@ -78,7 +78,17 @@ namespace WebUI.Controllers
                 return HttpNotFound();
             }
 
-            Order order = new Order() { NumberOfTickets = seats.Count(), ShowingId = showing.Id };
+            double price = 0;
+            for (int i = 0; i < seats.Length; i++)
+            {
+                price += priceCalculator.CalculatePrice(showing, i < ticketsChildren);
+            }
+
+            Order order = new Order() {
+                NumberOfTickets = seats.Length,
+                ShowingId = showing.Id,
+                TotalPrice = price,
+            };
             repo.Create<Order>(order);
             repo.Save();
 

@@ -12,10 +12,12 @@ namespace WebUI.Controllers
     public class MovieController : Controller
     {
         protected IRepository repo;
+        protected IPriceCalculator priceCalculator;
 
-        public MovieController(IRepository repo)
+        public MovieController(IRepository repo, IPriceCalculator priceCalculator)
         {
             this.repo = repo;
+            this.priceCalculator = priceCalculator;
         }
 
         public ViewResult Index()
@@ -40,6 +42,8 @@ namespace WebUI.Controllers
 
             var now = DateTime.Now;
             IEnumerable<Showing> showings = movie.Showings.Where(s => s.Start > now).OrderBy(s => s.Start);
+
+            ViewBag.PriceCalculator = priceCalculator;
 
             return View(new MovieDetails { Movie = movie, Showings = showings });
         }
