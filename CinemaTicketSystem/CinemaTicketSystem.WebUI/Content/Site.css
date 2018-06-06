@@ -1,5 +1,13 @@
 ﻿body {
     padding-top: 90px;
+    background-color: #151515;
+}
+
+dt, dd, dl,h1,h2,h3,label,p,span {
+    color: white !important
+}
+.colorBlack dt, dl, dd, label{
+    color: black;
 }
 
 .body-content {
@@ -39,6 +47,8 @@ dl.row > dd {
 }
 
 .jumbotron {
-    background-image: url("../img/jumbotronbg.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url("../img/jumbotronbg.jpg");
     background-size: cover;
+
+
 }

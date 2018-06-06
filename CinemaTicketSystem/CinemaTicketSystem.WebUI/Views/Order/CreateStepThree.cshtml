@@ -13,64 +13,66 @@
     <input type="hidden" name="OrderId" value="@ViewBag.OrderID" />
     <div class="card text-center">
         <div class="card-body">
-            <dl class="dl-horizontal">
-                <dt>
-                    Filmnaam
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Showing.Movie.Name)
-                </dd>
-                <dt>
-                    Zaalnummer
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Showing.Room.LocationId)
-                </dd>
-                <dt>
-                    Begintijd film
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Showing.Start)
-                </dd>
-                <dt>
-                    Duur film
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Showing.Movie.LengthInMinutes) Minuten
-                </dd>
-                <dt>
-                    Taal
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Showing.Movie.SpokenLanguage)
-                </dd>
-                <dt>
-                    Rolstoeltoegankelijk?
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Showing.Room.WheelchairAccesible)
-                </dd>
-                <dt>
-                    Aantal tickets
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.NumberOfTickets)
+            <div class="colorBlack">
+                <dl class="dl-horizontal">
+                    <dt>
+                        Filmnaam
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Showing.Movie.Name)
+                    </dd>
+                    <dt>
+                        Zaalnummer
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Showing.Room.LocationId)
+                    </dd>
+                    <dt>
+                        Begintijd film
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Showing.Start)
+                    </dd>
+                    <dt>
+                        Duur film
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Showing.Movie.LengthInMinutes) Minuten
+                    </dd>
+                    <dt>
+                        Taal
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Showing.Movie.SpokenLanguage)
+                    </dd>
+                    <dt>
+                        Rolstoeltoegankelijk?
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Showing.Room.WheelchairAccesible)
+                    </dd>
+                    <dt>
+                        Aantal tickets
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NumberOfTickets)
 
-                </dd>
-                <dt>
-                    Ordernummer
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.OrderNumber)
-                </dd>
-                <dt>
-                    Totaalprijs
-                </dt>
-                <dd>
-                   &euro; @Html.DisplayFor(model => model.TotalPrice)
-                </dd>
+                    </dd>
+                    <dt>
+                        Ordernummer
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.OrderNumber)
+                    </dd>
+                    <dt>
+                        Totaalprijs
+                    </dt>
+                    <dd>
+                        &euro; @Html.DisplayFor(model => model.TotalPrice)
+                    </dd>
 
-            </dl>
+                </dl>
+            </div>
             <div class="btn-group">
                 <a href="@Url.Action("Index", "Showing")" class="btn btn-danger" style="margin-right: 20px;">Annuleer</a>
                 <button class="btn btn-danger" type="submit">Betaal</button>
