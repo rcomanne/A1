@@ -3,21 +3,24 @@
     ViewBag.Title = "CreateStepFour";
 }
 
-<div class="container">
-    <div class="col-md-6" style="text-align: center; width: 50%; margin: auto">
-        <div class="card">
-            <form>
-                <h2 style="text-align: center">Laatste stap</h2>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="InputEmail">Vul uw e-mailadres in om de ticketcode(s) thuis te ontvangen</label>
-                        <input type="email" style="text-align: center" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Vul uw e-mailadres in">
-                        <small id="emailHelp" class="form-text text-muted">Deze code(s) heeft u nodig om uw kaartjes af te halen in de bioscoop</small>
+@using (Html.BeginForm("ThankYou", "Order", new {id = ViewBag.ShowingID}))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="col-md-6" style="text-align: center; width: 50%; margin: auto">
+            <div class="card">
+                <form>
+                    <h2 style="text-align: center">Laatste stap</h2>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="Email">Vul uw e-mailadres in om de ticketcode(s) per mail te ontvangen</label>
+                            <input type="email" name="Email" style="text-align: center" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Vul uw e-mailadres in">
+                            <small id="emailHelp" class="form-text text-muted">Deze code(s) heeft u nodig om uw kaartjes af te halen in de bioscoop</small>
+                        </div>
+                        <button type="submit" id="btnSend" class="btn btn-primary" onclick="btnSend">Verstuur</button>
                     </div>
-                    <button type="submit" class="btn btn-primary">Verstuur</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
+}

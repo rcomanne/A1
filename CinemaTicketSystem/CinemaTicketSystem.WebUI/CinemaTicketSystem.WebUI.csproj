@@ -261,6 +261,7 @@
     <Content Include="Views\Order\CreateStepTwo.cshtml" />
     <Content Include="Views\Order\CreateStepThree.cshtml" />
     <Content Include="Views\Order\CreateStepFour.cshtml" />
+    <Content Include="Views\Order\ThankYou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
