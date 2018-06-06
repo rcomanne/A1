@@ -17,13 +17,15 @@ namespace WebUI.Controllers
     public class OrderController : Controller
     {
         private IRepository repo;
+        private IPriceCalculator priceCalculator;
 
         private IMailer mailer;
 
-        public OrderController(IRepository repo, IMailer mailer)
+        public OrderController(IRepository repo, IMailer mailer, IPriceCalculator priceCalculator)
         {
             this.repo = repo;
             this.mailer = mailer;
+            this.priceCalculator = priceCalculator;
         }
 
         public ActionResult CreateStepOne(int? id)
@@ -71,8 +73,6 @@ namespace WebUI.Controllers
             ViewBag.TicketsAdults = ticketsAdults;
             ViewBag.TicketsChildren = ticketsChildren;
 
-            //Get best seats as default.
-
             return View(showing);
         }
 
@@ -91,7 +91,19 @@ namespace WebUI.Controllers
                 return HttpNotFound();
             }
 
-            Order order = new Order() {NumberOfTickets = seats.Count(), ShowingId = showing.Id};
+
+            double price = 0;
+            for (int i = 0; i < seats.Length; i++)
+            {
+                price += priceCalculator.CalculatePrice(showing, i < ticketsChildren);
+            }
+
+            Order order = new Order() {
+                NumberOfTickets = seats.Length,
+                ShowingId = showing.Id,
+                TotalPrice = price,
+            };
+
             repo.Create<Order>(order);
             repo.Save();
 
@@ -159,6 +171,44 @@ namespace WebUI.Controllers
             ViewBag.ShowingID = id;
 
             return View(showing);
+        }
+        // GET Home voor het invoeren van order nummer
+        [HttpGet]
+        public ViewResult Index() {
+            return View();
+        }
+
+        // GET Edit
+        public ViewResult Edit(int? id) {
+            return View(repo.GetById<Order>(id));
+        }
+
+        [HttpPost]
+        public ActionResult GetOrder(int orderNumber) {
+            IEnumerable<Order> orders = repo.Get<Order>(q => q.OrderNumber == orderNumber);
+            if (orders == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = orders.ElementAt<Order>(0);
+            if (order == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            order.Showing = repo.GetById<Showing>(order.ShowingId);
+
+            return new Rotativa.ViewAsPdf(order);
+        }
+
+        [HttpGet]
+        public ActionResult Details(int? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = repo.GetById<Order>(id);
+            if (order == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            order.Showing = repo.GetById<Showing>(order.ShowingId);
+            return new Rotativa.ViewAsPdf(order);
         }
     }
 }

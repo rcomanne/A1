@@ -1,0 +1,64 @@
+﻿@model CinemaTicketSystem.Domain.Entities.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Ticket voor bestelling #@Model.OrderNumber</h2>
+
+<div>
+    <h4>@Model.Showing.Movie.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Locatie
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Showing.Room.Location.Name)
+        </dd>
+        <dt>
+            Zaal
+        </dt>
+        <dd>
+            @Model.Showing.Room.Name
+        </dd>
+        <dt>
+            Stoelen
+        </dt>
+        <dd>
+            @foreach (var orderseat in Model.OrderSeats) {
+                <dd>Rij: @orderseat.Seat.Row Nr: @orderseat.Seat.Number</dd>
+            }
+        </dd>
+        <dt>
+            Tijd
+        </dt>
+        <dd>
+            @Model.Showing.Start
+        </dd>
+        <dt>
+            Aantal tickets
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfTickets)
+        </dd>
+        <dt>Totaal prijs:</dt>
+        <dd>
+            € @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+        <dt>Zaal:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Showing.Room.Name)
+        </dd>
+        <dt>Tijd:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Showing.Start)
+        </dd>
+        <dt>
+            Bestellings datum
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+    </dl>
+</div>

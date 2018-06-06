@@ -2,6 +2,7 @@ namespace CinemaTicketSystem.Domain.Migrations
 {
     using CinemaTicketSystem.Domain.Entities;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -160,12 +161,6 @@ namespace CinemaTicketSystem.Domain.Migrations
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 18, MovieId = 5, RoomId = 5, Start = DateTime.Today.AddHours(23), Is3D = false });
             context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 19, MovieId = 6, RoomId = 6, Start = DateTime.Today.AddHours(23), Is3D = false });
 
-            context.Orders.AddOrUpdate(
-                o => o.Id,
-                new Order { Id = 1, OrderNumber = 0000000001, ShowingId = context.Showings.Find(1).Id, NumberOfTickets = 2, TotalPrice = 17.0 },
-                new Order { Id = 2, OrderNumber = 0000000002, ShowingId = context.Showings.Find(2).Id, NumberOfTickets = 4, TotalPrice = 34.0 }
-            );
-
             // Add seats to room 1, 2, 3
             foreach (int row in Enumerable.Range(1, 8))
             {
@@ -196,6 +191,34 @@ namespace CinemaTicketSystem.Domain.Migrations
                     context.Seats.Add(new Seat { Room = room6, Number = num, Row = row });
                 }
             }
+
+            context.Orders.AddOrUpdate(
+                o => o.Id,
+                new Order {
+                    Id = 1,
+                    OrderNumber = 0000001234,
+                    ShowingId = context.Showings.Find(1).Id,
+                    NumberOfTickets = 2,
+                    TotalPrice = 17.0
+                },
+                new Order {
+                    Id = 2,
+                    OrderNumber = 0000000002,
+                    ShowingId = context.Showings.Find(2).Id,
+                    NumberOfTickets = 4,
+                    TotalPrice = 34.0
+                }
+            );
+
+            context.OrderSeats.AddOrUpdate(
+                os => os.Id,
+                new OrderSeat { OrderId = 1, SeatId = 112},
+                new OrderSeat { OrderId = 1, SeatId = 115 },
+                new OrderSeat { OrderId = 2, SeatId = 242 },
+                new OrderSeat { OrderId = 2, SeatId = 245 },
+                new OrderSeat { OrderId = 2, SeatId = 248 },
+                new OrderSeat { OrderId = 2, SeatId = 251 }
+            );
         }
     }
 }

@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Abstract\IMailer.cs" />
+    <Compile Include="Abstract\IPriceCalculator.cs" />
     <Compile Include="Abstract\IReadOnlyRepository.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\ITokenGenerator.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Concrete\Entity.cs" />
     <Compile Include="Concrete\EntityFrameworkReadOnlyRepository.cs" />
     <Compile Include="Concrete\EntityFrameworkRepository.cs" />
+    <Compile Include="Concrete\PriceCalculator.cs" />
     <Compile Include="Concrete\RandomTokenGenerator.cs" />
     <Compile Include="Concrete\SmtpMailer.cs" />
     <Compile Include="Entities\Location.cs" />
