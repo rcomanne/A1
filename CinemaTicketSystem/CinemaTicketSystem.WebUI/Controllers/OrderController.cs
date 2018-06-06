@@ -6,6 +6,7 @@ using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Runtime.Remoting;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
@@ -16,9 +17,12 @@ namespace WebUI.Controllers
     {
         private IRepository repo;
 
-        public OrderController(IRepository repo)
+        private IMailer mailer;
+
+        public OrderController(IRepository repo, IMailer mailer)
         {
             this.repo = repo;
+            this.mailer = mailer;
         }
 
         public ActionResult CreateStepOne(int? id)
@@ -124,7 +128,7 @@ namespace WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ThankYou(int id, string Email)
+        public ActionResult ThankYou(int id, string Email, string OrderNumber)
         {
 
             if (id == null)
@@ -137,7 +141,21 @@ namespace WebUI.Controllers
             {
                 return HttpNotFound();
             }
-            
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add(new MailAddress(Email));
+                mail.Body = String.Format("Bedankt voor je bestelling! \"{0}\"", OrderNumber);
+                mail.IsBodyHtml = true;
+                mailer.Send(mail);
+            }
+            catch (Exception e)
+            {
+                Response.Write("Error " + e.ToString());
+            }
+
+
             return View(showing);
         }
     }
