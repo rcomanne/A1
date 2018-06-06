@@ -1,6 +1,7 @@
 ﻿using CinemaTicketSystem.Domain.Abstract;
 using CinemaTicketSystem.Domain.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Linq;
@@ -128,7 +129,7 @@ namespace WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ThankYou(int id, string Email, string OrderNumber)
+        public ActionResult ThankYou(int id, string email, Order order)
         {
 
             if (id == null)
@@ -145,8 +146,8 @@ namespace WebUI.Controllers
             try
             {
                 MailMessage mail = new MailMessage();
-                mail.To.Add(new MailAddress(Email));
-                mail.Body = String.Format("Bedankt voor je bestelling! \"{0}\"", OrderNumber);
+                mail.To.Add(new MailAddress(email));
+                mail.Body = String.Format($"Bedankt voor je bestelling! Uw ordernummer is: {order.OrderNumber}");
                 mail.IsBodyHtml = true;
                 mailer.Send(mail);
             }
@@ -155,6 +156,7 @@ namespace WebUI.Controllers
                 Response.Write("Error " + e.ToString());
             }
 
+            ViewBag.ShowingID = id;
 
             return View(showing);
         }
