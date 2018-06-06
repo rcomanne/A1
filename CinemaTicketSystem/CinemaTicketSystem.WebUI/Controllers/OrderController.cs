@@ -100,5 +100,43 @@ namespace WebUI.Controllers
 
             return RedirectToAction("Details", new { id = order.Id });
         }
+        // GET Home voor het invoeren van order nummer
+        [HttpGet]
+        public ViewResult Index() {
+            return View();
+        }
+
+        // GET Edit
+        public ViewResult Edit(int? id) {
+            return View(repo.GetById<Order>(id));
+        }
+
+        [HttpPost]
+        public ActionResult GetOrder(int orderNumber) {
+            IEnumerable<Order> orders = repo.Get<Order>(q => q.OrderNumber == orderNumber);
+            if (orders == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = orders.ElementAt<Order>(0);
+            if (order == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            order.Showing = repo.GetById<Showing>(order.ShowingId);
+
+            return new Rotativa.ViewAsPdf(order);
+        }
+
+        [HttpGet]
+        public ActionResult Details(int? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = repo.GetById<Order>(id);
+            if (order == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            order.Showing = repo.GetById<Showing>(order.ShowingId);
+            return new Rotativa.ViewAsPdf(order);
+        }
     }
 }
