@@ -1,20 +1,21 @@
 ﻿@model CinemaTicketSystem.Domain.Entities.Order
 
+
 <div class="colorBlack">
     <h2>Print tickets met order nummer</h2>
-    <div class="form-horizontal">
-        <form action="/Order/GetOrder" method="post">
-            <div class="form-group">
-                <label style="color: white" for="OrderNumber" class="control-label col-md-2">Ordernummer</label>
-                <div class="col-md-10">
-                    <input name="orderNumber" id="orderNumber" type="number" />
-                </div>
+        <div class="form-horizontal">
+            <form action="/Order/GetOrder" method="post">
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Print ticket" class="btn btn-danger" />
+                    <label style="color: white" for="OrderNumber" class="control-label col-md-2">Ordernummer</label>
+                    <div class="col-md-10">
+                        <input name="orderNumber" id="orderNumber" type="number"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Print ticket" class="btn btn-danger"/>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
 </div>

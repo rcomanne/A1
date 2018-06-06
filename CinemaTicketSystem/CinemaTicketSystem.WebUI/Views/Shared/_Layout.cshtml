@@ -38,7 +38,7 @@
             @using (Html.BeginForm("Signup", "NewsletterSignup", FormMethod.Post, new { @class = "form-inline" }))
             {
                 @Html.AntiForgeryToken()
-                <label class="mb-2 mr-sm-2" for="NewsletterSignupEmail">Schrijf je in voor de nieuwsbrief: </label>
+                <label class="mb-2 mr-sm-2" for="NewsletterSignupEmail" style="color: black !important;">Schrijf je in voor de nieuwsbrief: </label>
                 <input type="email" class="form-control mb-2 mr-sm-2" id="NewsletterSignupEmail" placeholder="E-mailadres" name="Email">
                 <button type="submit" class="btn btn-danger mb-2">Submit</button>
             }
