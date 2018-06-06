@@ -10,6 +10,7 @@
 @using (Html.BeginForm("CreateStepFour", "Order", new { id = ViewBag.ShowingID }))
 {
     @Html.AntiForgeryToken()
+    <input type="hidden" name="OrderId" value="@ViewBag.OrderID" />
     <div class="card text-center">
         <div class="card-body">
             <dl class="dl-horizontal">

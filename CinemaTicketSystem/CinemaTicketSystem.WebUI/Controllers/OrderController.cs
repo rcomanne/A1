@@ -115,13 +115,14 @@ namespace WebUI.Controllers
             repo.Save();
 
             ViewBag.ShowingID = id;
+            ViewBag.OrderID = order.Id;
 
             return View(order);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateStepFour(int id)
+        public ActionResult CreateStepFour(int id, int orderId)
         {
             if (id == null)
             {
@@ -135,6 +136,7 @@ namespace WebUI.Controllers
             }
 
             ViewBag.ShowingID = id;
+            ViewBag.OrderID = orderId;
 
             return View(showing);
         }
@@ -185,14 +187,13 @@ namespace WebUI.Controllers
 
         [HttpPost]
         public ActionResult GetOrder(int orderNumber) {
-            IEnumerable<Order> orders = repo.Get<Order>(q => q.OrderNumber == orderNumber);
-            if (orders == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Order order = orders.ElementAt<Order>(0);
+            
+            Order order = repo.GetFirst<Order>(q => q.Id == orderNumber);
+
             if (order == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             order.Showing = repo.GetById<Showing>(order.ShowingId);
 
             return new Rotativa.ViewAsPdf(order);
