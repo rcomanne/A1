@@ -26,7 +26,9 @@
             Stoelen
         </dt>
         <dd>
-            @Model.OrderSeats
+            @foreach (var orderseat in Model.OrderSeats) {
+                <dd>Rij: @orderseat.Seat.Row Nr: @orderseat.Seat.Number</dd>
+            }
         </dd>
         <dt>
             Tijd

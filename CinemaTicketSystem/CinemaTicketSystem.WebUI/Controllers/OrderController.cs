@@ -103,7 +103,17 @@ namespace WebUI.Controllers
 
         [HttpPost]
         public ActionResult GetOrder(int orderNumber) {
-            return Details(orderNumber);
+            IEnumerable<Order> orders = repo.Get<Order>(q => q.OrderNumber == orderNumber);
+            if (orders == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = orders.ElementAt<Order>(0);
+            if (order == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            order.Showing = repo.GetById<Showing>(order.ShowingId);
+
+            return new Rotativa.ViewAsPdf(order);
         }
 
         [HttpGet]
@@ -113,14 +123,7 @@ namespace WebUI.Controllers
             }
             Order order = repo.GetById<Order>(id);
             if (order == null) {
-                IEnumerable<Order> orders = repo.Get<Order>(q => q.OrderNumber == id);
-                if (orders == null) {
-                    return HttpNotFound();
-                }
-                order = orders.ElementAt<Order>(0);
-                if (order == null) {
-                    return HttpNotFound();
-                }
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             order.Showing = repo.GetById<Showing>(order.ShowingId);
             return new Rotativa.ViewAsPdf(order);
