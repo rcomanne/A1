@@ -37,3 +37,8 @@ dl.row > dd {
 .seat input:checked + label {
     background-color: green;
 }
+
+.jumbotron {
+    background-image: url("../img/jumbotronbg.jpg");
+    background-size: cover;
+}

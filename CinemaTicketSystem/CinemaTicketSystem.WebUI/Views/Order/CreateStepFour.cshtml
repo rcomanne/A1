@@ -4,7 +4,7 @@
 }
 
 <form id="PrintPdfForm" action="/Order/GetOrder" method="post">
-    <h1>Jouw order nummer is @ViewBag.OrderID</h1>
+    <h1 style="text-align: center">Uw order nummer is @ViewBag.OrderID</h1>
     <input name="orderNumber" id="orderNumber" value="@ViewBag.OrderID" type="hidden"/>
 </form>
 @using (Html.BeginForm("ThankYou", "Order", new {id = ViewBag.ShowingID}))
@@ -21,8 +21,8 @@
                             <input type="email" name="Email" style="text-align: center" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Vul uw e-mailadres in">
                             <small id="emailHelp" class="form-text text-muted">Deze code(s) heeft u nodig om uw kaartjes af te halen in de bioscoop</small>
                         </div>
-                        <button type="submit" id="btnSend" class="btn btn-primary" onclick="btnSend">Verstuur</button>
-                        <input type="submit" form="PrintPdfForm" value="Print ticket" class="btn btn-default" />
+                        <button type="submit" id="btnSend" class="btn btn-primary" onclick="btnSend">Verstuur en rond uw bestelling af</button>
+                        <button type="submit" form="PrintPdfForm" value="Print ticket" class="btn btn-danger" />
                     </div>
                 </form>
             </div>
