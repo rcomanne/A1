@@ -20,15 +20,24 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="Email">Vul uw e-mailadres in om de ticketcode(s) per mail te ontvangen</label>
-                                <input type="email" name="Email" style="text-align: center" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Vul uw e-mailadres in">
+                                <input type="email" name="Email" style="text-align: center" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Vul uw e-mailadres in" required>
                                 <small id="emailHelp" class="form-text text-muted">Deze code(s) heeft u nodig om uw kaartjes af te halen in de bioscoop</small>
                             </div>
                             <button type="submit" id="btnSend" class="btn btn-danger" onclick="btnSend">Verstuur en rond uw bestelling af</button>
-                            <button type="submit" form="PrintPdfForm" value="Print ticket" class="btn btn-danger">Print uw kaartje uit</button>
+                            <button type="button" id="PrintPdfFormButton" value="Print ticket" class="btn btn-danger">Print uw kaartje uit</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+}
+
+@section scripts {
+    
+    <script>
+        $('#PrintPdfFormButton').click(function () {
+            $('#PrintPdfForm').submit();
+        });
+    </script>
 }
