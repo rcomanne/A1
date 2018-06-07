@@ -17,15 +17,16 @@ namespace CinemaTicketSystem.WebUI.Controllers.Tests {
         public void DetailsTest() {
             // Setup
             Mock<IRepository> mock = new Mock<IRepository>();
+            Showing initialShowing = new Showing() {
+                Id = 1,
+                Start = DateTime.Today,
+                Movie = new Movie { Id = 1, Name = "Deadpool 2", YearOfRelease = 2018, LengthInMinutes = 120, SpokenLanguage = "English", Genre = "Actie/Avontuur", MinimumAge = 16, ImageUrl = "https://www.vuecinemas.nl/thumb?w=268&f=jpg&src=userfiles/image/movies/Deadpool-2_ps_1_jpg_sd-high.jpg&alt=img/movie_placeholder.png" },
+                Room = new Room { Id = 1, Name = "1", LocationId = 1 }
+            };
             Order initialOrder = new Order {
                 Id = 2,
                 OrderNumber = 0000000002,
-                Showing = new Showing() {
-                    Id = 1,
-                    Start = DateTime.Today,
-                    Movie = new Movie { Id = 1, Name = "Deadpool 2", YearOfRelease = 2018, LengthInMinutes = 120, SpokenLanguage = "English", Genre = "Actie/Avontuur", MinimumAge = 16, ImageUrl = "https://www.vuecinemas.nl/thumb?w=268&f=jpg&src=userfiles/image/movies/Deadpool-2_ps_1_jpg_sd-high.jpg&alt=img/movie_placeholder.png" },
-                    Room = new Room { Id = 1, Name = "1", LocationId = 1 },
-                },
+                Showing = initialShowing,
                 NumberOfTickets = 4,
                 TotalPrice = 34.0
             };
@@ -41,15 +42,15 @@ namespace CinemaTicketSystem.WebUI.Controllers.Tests {
             Assert.AreEqual(initialOrder.TotalPrice, order.TotalPrice);
             Assert.AreEqual(initialOrder.NumberOfTickets, order.NumberOfTickets);
 
-            Assert.AreEqual(initialOrder.Showing.Movie.Id, order.Showing.Movie.Id);
-            Assert.AreEqual(initialOrder.Showing.Movie.Name, order.Showing.Movie.Name);
-            Assert.AreEqual(initialOrder.Showing.Movie.LengthInMinutes, order.Showing.Movie.LengthInMinutes);
-            Assert.AreEqual(initialOrder.Showing.Movie.Genre, order.Showing.Movie.Genre);
-            Assert.AreEqual(initialOrder.Showing.Movie.SpokenLanguage, order.Showing.Movie.SpokenLanguage);
+            Assert.AreEqual(initialShowing.Movie.Id, order.Showing.Movie.Id);
+            Assert.AreEqual(initialShowing.Movie.Name, order.Showing.Movie.Name);
+            Assert.AreEqual(initialShowing.Movie.LengthInMinutes, order.Showing.Movie.LengthInMinutes);
+            Assert.AreEqual(initialShowing.Movie.Genre, order.Showing.Movie.Genre);
+            Assert.AreEqual(initialShowing.Movie.SpokenLanguage, order.Showing.Movie.SpokenLanguage);
 
-            Assert.AreEqual(initialOrder.Showing.Room.Id, order.Showing.Room.Id);
-            Assert.AreEqual(initialOrder.Showing.Room.NumberOfSeats, order.Showing.Room.NumberOfSeats);
-            Assert.AreEqual(initialOrder.Showing.Room.WheelchairAccesible, order.Showing.Room.WheelchairAccesible);
+            Assert.AreEqual(initialShowing.Room.Id, order.Showing.Room.Id);
+            Assert.AreEqual(initialShowing.Room.NumberOfSeats, order.Showing.Room.NumberOfSeats);
+            Assert.AreEqual(initialShowing.Room.WheelchairAccesible, order.Showing.Room.WheelchairAccesible);
         }
     }
 }
