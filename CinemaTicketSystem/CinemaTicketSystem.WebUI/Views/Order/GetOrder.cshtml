@@ -4,11 +4,11 @@
     ViewBag.Title = "Uw ticket(s)";
     ViewBag.HideFooterHeader = true;
 }
+<div style="text-align: center">
+    <h2>Uw ticket(s)</h2>
 
-<h2 >Uw ticket(s)</h2>
 
-<div>
-    <h4 style="color: white!important">Bestelling nr. @Model.Id voor @Model.Showing.Movie.Name</h4>
+    <h4 style="color: white !important;">Bestelling nr. @Model.Id voor @Model.Showing.Movie.Name</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -27,37 +27,38 @@
             Stoelen
         </dt>
         <dd style="color: white!important">
-            @foreach (var orderseat in Model.OrderSeats) {
-                <dd style="color: white!important">Rij: @orderseat.Seat.Row Nr: @orderseat.Seat.Number</dd>
-            }
-        </dd>
-        <dt>
-            Tijd
-        </dt>
-        <dd style="color: white!important">
-            @Model.Showing.Start
-        </dd>
-        <dt>
-            Aantal tickets
-        </dt>
-        <dd style="color: white!important">
-            @Html.DisplayFor(model => model.NumberOfTickets)
-        </dd>
+            @foreach (var orderseat in Model.OrderSeats)
+            {
+            <dd style="color: white!important">Rij: @orderseat.Seat.Row Nr: @orderseat.Seat.Number</dd>
+        }
+            </dd>
+            <dt>
+                Tijd
+            </dt>
+            <dd style="color: white!important">
+                @Model.Showing.Start
+            </dd>
+            <dt>
+                Aantal tickets
+            </dt>
+            <dd style="color: white!important">
+                @Html.DisplayFor(model => model.NumberOfTickets)
+            </dd>
 
-        <dt>
-            Totaal prijs
-        </dt>
+            <dt>
+                Totaal prijs
+            </dt>
 
-        <dd style="color: white!important">
-            € @Html.DisplayFor(model => model.TotalPrice)
-        </dd>
+            <dd style="color: white!important">
+                € @Html.DisplayFor(model => model.TotalPrice)
+            </dd>
 
-        <dt>
-            Besteld op
-        </dt>
+            <dt>
+                Besteld op
+            </dt>
 
-        <dd style="color: white!important">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-    </dl>
-</div>
+            <dd style="color: white!important">
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+        </dl>
+    </div>

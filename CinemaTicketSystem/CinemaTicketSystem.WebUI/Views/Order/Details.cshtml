@@ -1,31 +1,32 @@
 ﻿@model CinemaTicketSystem.Domain.Entities.Order
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Uw ticket(s)";
+    ViewBag.HideFooterHeader = true;
 }
 
 <h2>Ticket voor bestelling #@Model.OrderNumber</h2>
 
 <div>
-    <h4>@Model.Showing.Movie.Name</h4>
+    <h4 style="color: white!important">@Model.Showing.Movie.Name</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             Locatie
         </dt>
-        <dd>
+        <dd style="color: white!important">
             @Html.DisplayFor(model => model.Showing.Room.Location.Name)
         </dd>
         <dt>
             Zaal
         </dt>
-        <dd>
+        <dd style="color: white!important">
             @Model.Showing.Room.Name
         </dd>
         <dt>
             Stoelen
         </dt>
-        <dd>
+        <dd style="color: white!important">
             @foreach (var orderseat in Model.OrderSeats) {
                 <dd>Rij: @orderseat.Seat.Row Nr: @orderseat.Seat.Number</dd>
             }
@@ -33,31 +34,31 @@
         <dt>
             Tijd
         </dt>
-        <dd>
+        <dd style="color: white!important">
             @Model.Showing.Start
         </dd>
         <dt>
             Aantal tickets
         </dt>
-        <dd>
+        <dd style="color: white!important">
             @Html.DisplayFor(model => model.NumberOfTickets)
         </dd>
         <dt>Totaal prijs:</dt>
-        <dd>
+        <dd style="color: white!important">
             € @Html.DisplayFor(model => model.TotalPrice)
         </dd>
         <dt>Zaal:</dt>
-        <dd>
+        <dd style="color: white!important">
             @Html.DisplayFor(model => model.Showing.Room.Name)
         </dd>
         <dt>Tijd:</dt>
-        <dd>
+        <dd style="color: white!important">
             @Html.DisplayFor(model => model.Showing.Start)
         </dd>
         <dt>
             Bestellings datum
         </dt>
-        <dd>
+        <dd style="color: white!important">
             @Html.DisplayFor(model => model.CreatedDate)
         </dd>
     </dl>
