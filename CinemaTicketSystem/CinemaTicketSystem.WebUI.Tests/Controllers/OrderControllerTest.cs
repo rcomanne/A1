@@ -31,7 +31,7 @@ namespace CinemaTicketSystem.WebUI.Controllers.Tests {
             };
             mock.Setup(m => m.GetById<Order>(1)).Returns(initialOrder);
 
-            OrderController controller = new OrderController(mock.Object);
+            OrderController controller = new OrderController(mock.Object, new Mock<IMailer>().Object, new Mock<IPriceCalculator>().Object);
 
             ActionResult actionResult = controller.Details(1);
             

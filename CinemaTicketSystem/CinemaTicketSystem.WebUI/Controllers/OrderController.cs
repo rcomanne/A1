@@ -122,7 +122,7 @@ namespace WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateStepFour(int id, int orderId)
+        public ActionResult CreateStepFour(int? id, int orderId)
         {
             if (id == null)
             {
@@ -143,7 +143,7 @@ namespace WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ThankYou(int id, string email, Order order)
+        public ActionResult ThankYou(int? id, string email, Order order)
         {
 
             if (id == null)
@@ -208,7 +208,6 @@ namespace WebUI.Controllers
             if (order == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            order.Showing = repo.GetById<Showing>(order.ShowingId);
             return new Rotativa.ViewAsPdf(order);
         }
     }
