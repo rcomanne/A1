@@ -161,7 +161,7 @@ namespace WebUI.Controllers
             {
                 MailMessage mail = new MailMessage();
                 mail.To.Add(new MailAddress(email));
-                mail.Body = String.Format($"Bedankt voor uw bestelling! Uw ordernummer is: {order.Id}");
+                mail.Body = String.Format($"Bedankt voor uw bestelling bij Avans Bioscopen! Uw ordernummer is: {order.Id}. Veel kijkplezier!");
                 mail.IsBodyHtml = true;
                 mailer.Send(mail);
             }
