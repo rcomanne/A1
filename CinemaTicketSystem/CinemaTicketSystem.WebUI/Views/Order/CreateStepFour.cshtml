@@ -4,7 +4,7 @@
 }
 
 <form id="PrintPdfForm" action="/Order/GetOrder" method="post">
-    <h1 style="text-align: center">Uw order nummer is @ViewBag.OrderID</h1>
+    <h1 style="text-align: center">Uw ordernummer is @ViewBag.OrderID</h1>
     <input name="orderNumber" id="orderNumber" value="@ViewBag.OrderID" type="hidden"/>
 </form>
 @using (Html.BeginForm("ThankYou", "Order", new {id = ViewBag.ShowingID}))
