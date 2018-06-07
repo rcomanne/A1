@@ -8,6 +8,8 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @if (ViewBag.HideFooterHeader == null)
+    {
     <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-danger">
         <div class="container">
             @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -32,10 +34,12 @@
             </div>
         </div>
     </nav>
+    }
     <div class="container body-content">
         @RenderBody()
     </div>
-
+    @if (ViewBag.HideFooterHeader == null)
+    {
     <footer>
         <div class="container">
             @using (Html.BeginForm("Signup", "NewsletterSignup", FormMethod.Post, new { @class = "form-inline" }))
@@ -47,6 +51,7 @@
             }
         </div>
     </footer>
+     }
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
