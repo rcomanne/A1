@@ -189,7 +189,10 @@ namespace WebUI.Controllers
         public ActionResult GetOrder(int orderNumber) {
             Order order = repo.GetFirst<Order>(q => q.OrderNumber == orderNumber);
             if (order == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                order = repo.GetFirst<Order>(q => q.Id == orderNumber);
+                if (order == null) {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
             }
             order.Showing = repo.GetById<Showing>(order.ShowingId);
             return new Rotativa.ViewAsPdf(order);
