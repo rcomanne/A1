@@ -16,23 +16,23 @@
                     <p>@Model.Movie.ShortDescription</p>
                     <dl class="row">
                         <dt class="col-4">Taal:</dt>
-                        <dd class="col-8">@Model.Movie.SpokenLanguage</dd>
+                        <dd class="col-8" style="color: white!important">@Model.Movie.SpokenLanguage</dd>
                         <dt class="col-4">Ondertiteling:</dt>
-                        <dd class="col-8">@Model.Movie.SubtitleLanguage</dd>
+                        <dd class="col-8" style="color: white!important">@Model.Movie.SubtitleLanguage</dd>
                         <dt class="col-4">Duur:</dt>
-                        <dd class="col-8">@Model.Movie.LengthInMinutes.ToString() minuten</dd>
+                        <dd class="col-8" style="color: white!important">@Model.Movie.LengthInMinutes.ToString() minuten</dd>
                         <dt class="col-4">Minimale leeftijd:</dt>
-                        <dd class="col-8">@Model.Movie.MinimumAge.ToString()</dd>
+                        <dd class="col-8" style="color: white!important">@Model.Movie.MinimumAge.ToString()</dd>
                         <dt class="col-4">Regiseur:</dt>
-                        <dd class="col-8">@Model.Movie.Director</dd>
+                        <dd class="col-8" style="color: white!important">@Model.Movie.Director</dd>
                         <dt class="col-4">Trailer:</dt>
-                        <dd class="col-8">@Model.Movie.Trailer</dd>
+                        <dd class="col-8" style="color: white!important">@Model.Movie.Trailer</dd>
                         <dt class="col-4">IMDB:</dt>
-                        <dd class="col-8">@Model.Movie.Imdb</dd>
-                        <dt class="col-4">Website:</dt>
-                        <dd class="col-8">@Model.Movie.WebLink</dd>
+                        <dd class="col-8" style="color: white!important">@Model.Movie.Imdb</dd>
+                        <dt class="col-4" >Website:</dt>
+                        <dd class="col-8" style="color: white!important">@Model.Movie.WebLink</dd>
                         <dt class="col-4">Laatste voorstelling:</dt>
-                        <dd class="col-8">@Model.Movie.LastShowDate.ToShortDateString()</dd>
+                        <dd class="col-8" style="color: white!important">@Model.Movie.LastShowDate.ToShortDateString()</dd>
                     </dl>
                     <div class="row">
                         @foreach (var showing in Model.Showings)
@@ -45,7 +45,7 @@
                                         <dt class="col-sm-4 col-xs-12">Zaal:</dt>
                                         <dt class="col-sm-8 col-xs-12">@showing.Room.Name</dt>
                                         <dt class="col-sm-4 col-xs-12">Prijs:</dt>
-                                        <dd class="col-sm-8 col-xs-12">&euro; @string.Format("{0:N2}", ViewBag.PriceCalculator.CalculatePrice(showing))</dd>
+                                        <dd class="col-sm-8 col-xs-12" style="color: white!important">&euro; @string.Format("{0:N2}", ViewBag.PriceCalculator.CalculatePrice(showing))</dd>
                                     </dl>
                                     <div class="row">
                                         <div class="col-sm-6">

@@ -2,32 +2,32 @@
 @{
     ViewBag.Title = "Showings";
 }
+    <div class="row">
+        @foreach (var showing in Model)
+        {
+            <div class="col-lg-6 col-12 mb-2">
+                <div class="border p-2 h-100">
+                    <div class="row">
 
-<div class="row">
-    @foreach (var showing in Model)
-    {
-        <div class="col-lg-6 col-12 mb-2">
-            <div class="border p-2 h-100">
-                <div class="row">
-                    <div class="col-sm-5 text-center">
-                        <img src="@showing.Movie.ImageUrl" alt="@showing.Movie.Name" class="img-fluid">
-                    </div>
-                    <div class="col-sm-7 d-flex flex-column">
-                        <h3>@showing.Movie.Name</h3>
-                        <dl class="row mb-auto align-items-start">
-                            <dt class="col-4">Start:</dt>
-                            <dd class="col-8">@showing.Start.ToString()</dd>
-                            <dt class="col-4">Duur:</dt>
-                            <dd class="col-8">@showing.Movie.LengthInMinutes.ToString() minuten</dd>
-                            <dt class="col-4">Prijs:</dt>
-                            <dd class="col-8">&euro; @string.Format("{0:N2}", ViewBag.PriceCalculator.CalculatePrice(showing))</dd>
-                            <dt class="col-4">Zaal:</dt>
-                            <dd class="col-8">@showing.Room.Name</dd>
-                        </dl>
-                        <a href="@Url.Action("CreateStepOne", "Order", new { id = showing.Id })" class="btn btn-danger float-right">Reserveer</a>
+                        <div class="col-sm-5 text-center">
+                            <img src="@showing.Movie.ImageUrl" alt="@showing.Movie.Name" class="img-fluid">
+                        </div>
+                        <div class="col-sm-7 d-flex flex-column">
+                            <h3>@showing.Movie.Name</h3>
+                            <dl class="row mb-auto align-items-start">
+                                <dt class="col-4">Start:</dt>
+                                <dd class="col-8" style="color: white!important">@showing.Start.ToString()</dd>
+                                <dt class="col-4">Duur:</dt>
+                                <dd class="col-8" style="color: white!important">@showing.Movie.LengthInMinutes.ToString() minuten</dd>
+                                <dt class="col-4">Prijs:</dt>
+                                <dd class="col-8" style="color: white!important">&euro; @string.Format("{0:N2}", ViewBag.PriceCalculator.CalculatePrice(showing))</dd>
+                                <dt class="col-4">Zaal:</dt>
+                                <dd class="col-8" style="color: white!important">@showing.Room.Name</dd>
+                            </dl>
+                            <a href="@Url.Action("CreateStepOne", "Order", new {id = showing.Id})" class="btn btn-danger float-right">Reserveer</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>

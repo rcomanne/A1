@@ -17,7 +17,7 @@
                         <h3>@movie.Name</h3>
                         <dl class="row mb-auto align-items-start">
                             <dt class="col-4">Duur:</dt>
-                            <dd class="col-8">@movie.LengthInMinutes.ToString() minuten</dd>
+                            <dd class="col-8" style="color: white!important">@movie.LengthInMinutes.ToString() minuten</dd>
                         </dl>
                         <a href="@Url.Action("Details", "Movie", new { id = movie.Id })" class="btn btn-danger float-right">Details en shows</a>
                     </div>
