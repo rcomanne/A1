@@ -187,15 +187,11 @@ namespace WebUI.Controllers
 
         [HttpPost]
         public ActionResult GetOrder(int orderNumber) {
-            
-            Order order = repo.GetFirst<Order>(q => q.Id == orderNumber);
-
+            Order order = repo.GetFirst<Order>(q => q.OrderNumber == orderNumber);
             if (order == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
             order.Showing = repo.GetById<Showing>(order.ShowingId);
-
             return new Rotativa.ViewAsPdf(order);
         }
 
@@ -208,6 +204,8 @@ namespace WebUI.Controllers
             if (order == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            order.Showing = repo.GetById<Showing>(order.ShowingId);
+            
             return new Rotativa.ViewAsPdf(order);
         }
     }
