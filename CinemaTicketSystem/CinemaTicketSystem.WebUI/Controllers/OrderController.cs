@@ -143,7 +143,7 @@ namespace WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ThankYou(int? id, string email, Order order)
+        public ActionResult ThankYou(int? id, string email, int orderId)
         {
 
             if (id == null)
@@ -161,7 +161,7 @@ namespace WebUI.Controllers
             {
                 MailMessage mail = new MailMessage();
                 mail.To.Add(new MailAddress(email));
-                mail.Body = String.Format($"Bedankt voor uw bestelling bij Avans Bioscopen! Uw ordernummer is: {showing.Id}. Veel kijkplezier!");
+                mail.Body = String.Format($"Bedankt voor uw bestelling bij Avans Bioscopen! Uw ordernummer is: {orderId}. Veel kijkplezier!");
                 mail.IsBodyHtml = true;
                 mailer.Send(mail);
             }

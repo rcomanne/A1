@@ -5,17 +5,18 @@
 
 <form id="PrintPdfForm" action="/Order/GetOrder" method="post">
     <h1 style="text-align: center">Uw ordernummer is @ViewBag.OrderID</h1>
-    <input name="orderNumber" id="orderNumber" value="@ViewBag.OrderID" type="hidden"/>
+    <input name="orderNumber" id="orderNumber" value="@ViewBag.OrderID" type="hidden" />
 </form>
-@using (Html.BeginForm("ThankYou", "Order", new {id = ViewBag.ShowingID}))
+@using (Html.BeginForm("ThankYou", "Order", new { id = ViewBag.ShowingID }))
 {
+    <input name="orderId" id="orderId" value="@ViewBag.OrderID" type="hidden" />
     @Html.AntiForgeryToken()
     <div class="container">
         <div class="col-md-6" style="text-align: center; width: 50%; margin: auto">
             <div class="card">
                 <div class="colorBlack">
                     <form>
-                        <h2 style="text-align: center; color: black !important" >Laatste stap</h2>
+                        <h2 style="text-align: center; color: black !important">Laatste stap</h2>
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="Email">Vul uw e-mailadres in om de ticketcode(s) per mail te ontvangen</label>
