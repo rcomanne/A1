@@ -4,10 +4,17 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Text;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
+using Owin;
 
 namespace CinemaTicketSystem.Domain.Concrete
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
         public ApplicationDbContext()
             : base("name=ApplicationDbContext")
@@ -25,7 +32,10 @@ namespace CinemaTicketSystem.Domain.Concrete
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
+
+        public System.Data.Entity.DbSet<CinemaTicketSystem.Domain.Entities.Survey> Surveys { get; set; }
     }
 }

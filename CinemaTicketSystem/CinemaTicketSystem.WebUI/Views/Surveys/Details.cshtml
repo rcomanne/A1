@@ -1,0 +1,114 @@
+﻿@model CinemaTicketSystem.Domain.Entities.Survey
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Survey</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OverallExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OverallExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MovieExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TravelExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravelExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BathroomExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BathroomExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShopExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShopExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

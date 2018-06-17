@@ -47,5 +47,19 @@ namespace WebUI.Controllers
 
             return View(new MovieDetails { Movie = movie, Showings = showings });
         }
+
+        [HttpGet]
+        // [Authorize]
+        public ActionResult Create() {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Movie movie) {
+            if (ModelState.IsValid) {
+                repo.Create<Movie>(movie);
+            }
+            return View();
+        }
     }
 }

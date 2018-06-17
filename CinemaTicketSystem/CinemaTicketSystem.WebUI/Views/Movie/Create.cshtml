@@ -1,0 +1,147 @@
+﻿@model CinemaTicketSystem.Domain.Entities.Movie
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4 style="white!important">Voeg een nieuwe film toe</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Titel", htmlAttributes: new { @class = "control-label col-md-2", style="color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Korte beschrijving", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Link naar poster van de film", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Jaar van uitgave", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.YearOfRelease, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.YearOfRelease, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Lengte in minuten", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LengthInMinutes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LengthInMinutes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Gesproken taal", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SpokenLanguage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SpokenLanguage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Ondertitel taal", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SubtitleLanguage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SubtitleLanguage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Kan in 3D afgespeeld worden", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Is3D)
+                    @Html.ValidationMessageFor(model => model.Is3D, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Regisseur", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Director, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Director, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Link naar de trailer", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Trailer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Trailer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Link naar IMDB", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Imdb, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Imdb, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Link naar de website", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WebLink, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WebLink, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Minimale leeftijd", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MinimumAge, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MinimumAge, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Genre(s)", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Genre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Laatst beschikbare show", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastShowDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastShowDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Voeg film toe" class="btn btn-default" style="color:white;background:red" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -166,9 +166,9 @@ namespace CinemaTicketSystem.Domain.Migrations
             {
                 foreach (int num in Enumerable.Range(1, 15))
                 {
-                    context.Seats.Add(new Seat { Room = room1, Number = num, Row = row });
-                    context.Seats.Add(new Seat { Room = room2, Number = num, Row = row });
-                    context.Seats.Add(new Seat { Room = room3, Number = num, Row = row });
+                    context.Seats.AddOrUpdate(new Seat { Room = room1, Number = num, Row = row });
+                    context.Seats.AddOrUpdate(new Seat { Room = room2, Number = num, Row = row });
+                    context.Seats.AddOrUpdate(new Seat { Room = room3, Number = num, Row = row });
                 }
             }
 
@@ -177,7 +177,7 @@ namespace CinemaTicketSystem.Domain.Migrations
             {
                 foreach (int num in Enumerable.Range(1, 10))
                 {
-                    context.Seats.Add(new Seat { Room = room4, Number = num, Row = row });
+                    context.Seats.AddOrUpdate(new Seat { Room = room4, Number = num, Row = row });
                 }
             }
 
@@ -187,8 +187,8 @@ namespace CinemaTicketSystem.Domain.Migrations
                 int numSeats = row > 2 ? 10 : 15;
                 foreach (int num in Enumerable.Range(1, numSeats))
                 {
-                    context.Seats.Add(new Seat { Room = room5, Number = num, Row = row });
-                    context.Seats.Add(new Seat { Room = room6, Number = num, Row = row });
+                    context.Seats.AddOrUpdate(new Seat { Room = room5, Number = num, Row = row });
+                    context.Seats.AddOrUpdate(new Seat { Room = room6, Number = num, Row = row });
                 }
             }
 
@@ -218,6 +218,16 @@ namespace CinemaTicketSystem.Domain.Migrations
                 new OrderSeat { OrderId = 2, SeatId = 245 },
                 new OrderSeat { OrderId = 2, SeatId = 248 },
                 new OrderSeat { OrderId = 2, SeatId = 251 }
+            );
+
+            context.Users.AddOrUpdate(
+                u => u.Id,
+                new AppUser { UserName = "admin", PasswordHash = "YWRtaW4=", Email = "ralph@comanne.eu", EmailConfirmed = true, PhoneNumber = "0636498319", PhoneNumberConfirmed = true }
+            );
+
+            context.Roles.AddOrUpdate(
+                r => r.Id,
+                new AppRole { Name = "Admin" }
             );
         }
     }
