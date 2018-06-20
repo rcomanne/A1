@@ -8,6 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using CinemaTicketSystem.Domain.Concrete;
 using CinemaTicketSystem.Domain.Entities;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
+using Owin;
 
 namespace CinemaTicketSystem.TouchUI.Controllers
 {

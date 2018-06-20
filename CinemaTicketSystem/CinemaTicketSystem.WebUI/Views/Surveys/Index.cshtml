@@ -1,99 +1,76 @@
-﻿@model IEnumerable<CinemaTicketSystem.Domain.Entities.Survey>
-
-@{
+﻿@{
     ViewBag.Title = "Index";
+    List<string> comments = ViewBag.Comments;
+    Dictionary<string, double> statistics = ViewBag.Results;
 }
 
-<h2>Index</h2>
+<div>
+    <h4 style="color:white!important">Statistieken van de tot nu toe afgenomen enquetes</h4>
+    <hr />
+    <dl class="dl-horizontal" style="color:white!important">
+        <dt>
+            Totaal aantal surveys
+        </dt>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.OverallExperience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MovieExperience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TravelExperience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BathroomExperience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShopExperience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FoodExperience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StaffExperience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </th>
-        <th></th>
-    </tr>
+        <dd style="color:white!important">
+            @(statistics["Total"].ToString())
+        </dd>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OverallExperience)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MovieExperience)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TravelExperience)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BathroomExperience)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShopExperience)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FoodExperience)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StaffExperience)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedBy)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+        <dt>
+            Gemiddelde totaal beoordeling
+        </dt>
 
-</table>
+        <dd style="color:white!important">
+            @(statistics["Overall"].ToString())
+        </dd>
+
+        <dt>
+            Gemiddelde film beoordeling
+        </dt>
+
+        <dd style="color:white!important">
+            @(statistics["Movie"].ToString())
+        </dd>
+
+        <dt>
+            Gemiddelde bereikbaarheid beoordeling
+        </dt>
+
+        <dd style="color:white!important">
+            @(statistics["Travel"].ToString())
+        </dd>
+
+        <dt>
+            Gemiddelde toiletten beoordeling
+        </dt>
+
+        <dd style="color:white!important">
+            @(statistics["Bathroom"].ToString())
+        </dd>
+
+        <dt>
+            Gemiddelde winkel beoordeling
+        </dt>
+
+        <dd style="color:white!important">
+            @(statistics["Shop"].ToString())
+        </dd>
+
+        <dt>
+            Gemiddelde voedsel beoordeling
+        </dt>
+
+        <dd style="color:white!important">
+            @(statistics["Food"].ToString())
+        </dd>
+
+        <dt>
+            Gemiddelde personeel beoordeling
+        </dt>
+
+        <dd style="color:white!important">
+            @(statistics["Staff"].ToString())
+        </dd>
+
+    </dl>
+</div>

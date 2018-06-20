@@ -13,6 +13,8 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using WebUI.UserManagement;
 using CinemaTicketSystem.Domain.Entities;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WebUI.Controllers
 {
@@ -29,17 +31,23 @@ namespace WebUI.Controllers
             if (ModelState.IsValid) {
                 var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
                 var authManager = HttpContext.GetOwinContext().Authentication;
-                string base64 = Base64Encode(model.Password);
+                string hashed = Hash(model.Password);
                 AppUser user = userManager.FindByName(model.UserName);
-                Boolean valid = userManager.CheckPassword(user, base64);
-                Boolean unhashedValid = userManager.CheckPassword(user, model.Password);
-                if (user != null && userManager.ValidatePassword(user, base64)) {
+                if (user != null && userManager.ValidatePassword(user, hashed)) {
+                    user.SecurityStamp = CreateStamp();
                     var ident = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                     authManager.SignIn(new AuthenticationProperties { IsPersistent = false }, ident);
-                    return Redirect(Url.Action("Index", "Home"));
+                    if (userManager.IsInRole(user.Id, "Admin")) {
+                        return View("../Auth/Admin");
+                    }
+                    return Redirect(Url.Action("Index", "Movie"));
                 }
             }
             return Redirect(Url.Action("Index", "Auth"));
+        }
+
+        public ActionResult Admin() {
+            return View();
         }
 
         public ActionResult CreateRole(string roleName) {
@@ -50,9 +58,14 @@ namespace WebUI.Controllers
             return Redirect(Url.Action("Index", "Auth"));
         }
 
-        private string Base64Encode(string text) {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(text);
-            return System.Convert.ToBase64String(plainTextBytes);
+        private string Hash(string text) {
+            var sha256 = SHA256.Create();
+            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(text));
+            return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+        }
+
+        private string CreateStamp() {
+            return DateTime.Now.Millisecond.ToString();
         }
     }
 }

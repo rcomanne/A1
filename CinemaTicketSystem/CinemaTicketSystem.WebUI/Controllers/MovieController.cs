@@ -49,15 +49,17 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        // [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create() {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Movie movie) {
             if (ModelState.IsValid) {
                 repo.Create<Movie>(movie);
+                return View("../Movie/Details", movie);
             }
             return View();
         }

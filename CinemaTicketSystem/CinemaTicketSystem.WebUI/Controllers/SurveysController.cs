@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CinemaTicketSystem.Domain.Concrete;
 using CinemaTicketSystem.Domain.Entities;
+using WebUI.Models;
 
 namespace WebUI.Controllers
 {
@@ -16,9 +17,16 @@ namespace WebUI.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Surveys
-        public ActionResult Index()
-        {
-            return View(db.Surveys.ToList());
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Index() {
+            SurveyStatisticsViewModel statistics = SurveyStatisticsViewModel.ToStatistics(db.Surveys.ToList());
+
+
+            ViewBag.Comments = statistics.Comments;
+            ViewBag.Results = statistics.GetNumbers();
+            ViewBag.IsAdmin = true;
+            return View();
         }
 
         // GET: Surveys/Details/5
@@ -53,76 +61,10 @@ namespace WebUI.Controllers
             {
                 db.Surveys.Add(survey);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return View("../Showing/Index.cshtml");
             }
 
             return View(survey);
-        }
-
-        // GET: Surveys/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Survey survey = db.Surveys.Find(id);
-            if (survey == null)
-            {
-                return HttpNotFound();
-            }
-            return View(survey);
-        }
-
-        // POST: Surveys/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,OverallExperience,MovieExperience,TravelExperience,BathroomExperience,ShopExperience,FoodExperience,StaffExperience,Comment,CreatedDate,ModifiedDate,CreatedBy,ModifiedBy")] Survey survey)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(survey).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(survey);
-        }
-
-        // GET: Surveys/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Survey survey = db.Surveys.Find(id);
-            if (survey == null)
-            {
-                return HttpNotFound();
-            }
-            return View(survey);
-        }
-
-        // POST: Surveys/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Survey survey = db.Surveys.Find(id);
-            db.Surveys.Remove(survey);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

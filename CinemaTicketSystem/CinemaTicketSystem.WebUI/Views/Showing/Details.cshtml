@@ -1,0 +1,46 @@
+﻿@model CinemaTicketSystem.Domain.Entities.Showing
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Showing</h4>
+    <hr />
+    <dl class="dl-horizontal" style="color:white!important">
+        <dt>
+            Film naam
+        </dt>
+
+        <dd style="color:white!important>
+            @Html.DisplayFor(model => model.Movie.Name)
+        </dd>
+
+        <dt>
+            Zaal naam
+        </dt>
+
+        <dd style="color:white!important">
+            @Html.DisplayFor(model => model.Room.Name)
+        </dd>
+
+        <dt>
+            Start datum en tijd
+        </dt>
+
+        <dd style="color:white!important">
+            @Html.DisplayFor(model => model.Start)
+        </dd>
+
+        <dt>
+            Is in 3D?
+        </dt>
+
+        <dd style="color:white!important">
+            @Html.DisplayFor(model => model.Is3D)
+        </dd>
+
+    </dl>
+</div>

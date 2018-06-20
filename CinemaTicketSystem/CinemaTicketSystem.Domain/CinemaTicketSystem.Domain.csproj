@@ -129,6 +129,10 @@
     <Compile Include="Migrations\201806171745062_user auth init.Designer.cs">
       <DependentUpon>201806171745062_user auth init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806191644500_survey init.cs" />
+    <Compile Include="Migrations\201806191644500_survey init.Designer.cs">
+      <DependentUpon>201806191644500_survey init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806171745062_user auth init.resx">
       <DependentUpon>201806171745062_user auth init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806191644500_survey init.resx">
+      <DependentUpon>201806191644500_survey init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,6 +9,7 @@ using CinemaTicketSystem.Domain.Abstract;
 using CinemaTicketSystem.Domain.Entities;
 using Moq;
 using System.Web.Mvc;
+using System.Security.Cryptography;
 
 namespace CinemaTicketSystem.TouchUI.Controllers.Tests {
     [TestClass()]

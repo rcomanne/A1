@@ -30,6 +30,10 @@
                     <li class="nav-item">
                         @Html.ActionLink("Route", "Index", "Map", new { }, new { @class = "nav-link" })
                     </li>
+                    @if (this.User.IsInRole("Admin")) {
+                        <li class="nav-item"></li>
+                        @Html.ActionLink("Admin home", "Admin", "Auth", new { }, new { @class = "nav-link"})
+                    }
                 </ul>
             </div>
         </div>
@@ -42,13 +46,19 @@
     {
     <footer>
         <div class="container">
-            @using (Html.BeginForm("Signup", "NewsletterSignup", FormMethod.Post, new { @class = "form-inline" }))
-            {
+            <div class="row">
+                @using (Html.BeginForm("Signup", "NewsletterSignup", FormMethod.Post, new { @class = "form-inline" })) {
                 @Html.AntiForgeryToken()
                 <label class="mb-2 mr-sm-2" for="NewsletterSignupEmail" style="color: black !important;">Schrijf je in voor de nieuwsbrief: </label>
                 <input type="email" class="form-control mb-2 mr-sm-2" id="NewsletterSignupEmail" placeholder="E-mailadres" name="Email">
                 <button type="submit" class="btn btn-danger mb-2">Submit</button>
-            }
+}
+                <div class="form-inline" style="margin-left:250px">
+                    <form action="../Surveys/Create" , method="get">
+                        <button type="submit" class="btn btn-danger mb-2">Vul onze enquete in!</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </footer>
      }

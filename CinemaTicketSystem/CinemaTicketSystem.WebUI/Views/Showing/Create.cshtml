@@ -1,21 +1,20 @@
 ﻿@model CinemaTicketSystem.Domain.Entities.Showing
-@using CinemaTicketSystem.Domain.Entities;
 
 @{
     ViewBag.Title = "Maak nieuwe voorstelling aan";
     List<string> movies = (List<string>)ViewBag.Movies;
-    List<string> rooms = (List<string>)ViewBag.Rooms;
+    List<int> rooms = (List<int>)ViewBag.Rooms;
 }
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    <h4 style="color:white">Maak nieuwe voorstelling aan</h4>
+    <h4 style="color:white!important">Maak nieuwe voorstelling aan</h4>
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.Label("Start datum en tijd", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Start, new { htmlAttributes = new { @class = "form-control" }, inputtype="date" })
+                @Html.EditorFor(model => model.Start, new { htmlAttributes = new { @class = "form-control datepicker" }, inputtype = "date" })
                 @Html.ValidationMessageFor(model => model.Start, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -23,7 +22,7 @@
         <div class="form-group">
             @Html.Label("Film", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.MovieId, new SelectList(movies), htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Movie, new SelectList(movies), htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MovieId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -31,7 +30,7 @@
         <div class="form-group">
             @Html.Label("Zaal", htmlAttributes: new { @class = "control-label col-md-2", style = "color:white!important" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.RoomId, new SelectList(rooms), htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Room, new SelectList(rooms), htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
             </div>
         </div>
