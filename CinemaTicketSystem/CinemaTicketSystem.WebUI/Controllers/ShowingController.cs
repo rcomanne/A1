@@ -32,10 +32,6 @@ namespace WebUI.Controllers
         {
             IEnumerable<Showing> showings = repo.Get<Showing>(s => s.Start >= DateTime.Now, q => q.OrderBy(s => s.Start));
 
-            if (showings == null || showings.Count() <= 0) {
-                showings = db.Showings.ToList();
-            }
-
             ViewBag.PriceCalculator = priceCalculator;
 
             return View(showings);
@@ -47,8 +43,13 @@ namespace WebUI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Showing showing = repo.GetById<Showing>(id);
-            showing.Movie = repo.GetById<Movie>(showing.MovieId);
-            showing.Room = repo.GetById<Room>(showing.RoomId);
+            if (showing.Movie == null) {
+                showing.Movie = repo.GetById<Movie>(showing.MovieId);
+            }
+            if (showing.Room == null) {
+                showing.Room = repo.GetById<Room>(showing.RoomId);
+            }
+            
             return View(showing);
         }
 
@@ -78,8 +79,13 @@ namespace WebUI.Controllers
                     Is3D = model.Is3D,
                     RoomId = repo.GetFirst<Room>(r => r.Id.Equals(model.Room)).Id
                 };
-                showing.Movie = repo.GetById<Movie>(showing.MovieId);
-                showing.Room = repo.GetById<Room>(showing.RoomId);
+                if (showing.Movie == null) {
+                    showing.Movie = repo.GetById<Movie>(showing.MovieId);
+                }
+                if (showing.Room == null) {
+                    showing.Room = repo.GetById<Room>(showing.RoomId);
+                }
+                
                 repo.Create<Showing>(showing);
                 repo.Save();
                 return View("~/Views/Showing/Details.cshtml", showing);
