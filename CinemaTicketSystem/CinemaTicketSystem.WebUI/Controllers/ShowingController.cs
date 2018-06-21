@@ -72,7 +72,7 @@ namespace WebUI.Controllers
                 Showing showing = new Showing {
                     Start = model.Start.ToLocalTime(),
                     CreatedDate = now,
-                    ModifiedDate = new DateTime(),
+                    ModifiedDate = now,
                     CreatedBy = "Admin",
                     ModifiedBy = "Admin",
                     MovieId = repo.GetFirst<Movie>(m => m.Name.Equals(model.Movie)).Id,
