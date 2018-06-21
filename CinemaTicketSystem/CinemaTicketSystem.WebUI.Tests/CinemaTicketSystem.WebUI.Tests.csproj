@@ -104,6 +104,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MovieControllerTests.cs" />
     <Compile Include="Controllers\OrderControllerTest.cs" />
     <Compile Include="Models\SurveyStatisticsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
