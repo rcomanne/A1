@@ -1,4 +1,5 @@
 ﻿using CinemaTicketSystem.Domain.Abstract;
+using CinemaTicketSystem.Domain.Concrete;
 using CinemaTicketSystem.Domain.Entities;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -17,6 +18,8 @@ namespace WebUI.Controllers
     {
         private IRepository repo;
 
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         private IPriceCalculator priceCalculator;
 
         public ShowingController(IRepository repo, IPriceCalculator priceCalculator)
@@ -28,6 +31,10 @@ namespace WebUI.Controllers
         public ViewResult Index()
         {
             IEnumerable<Showing> showings = repo.Get<Showing>(s => s.Start >= DateTime.Now, q => q.OrderBy(s => s.Start));
+
+            if (showings == null || showings.Count() <= 0) {
+                showings = db.Showings.ToList();
+            }
 
             ViewBag.PriceCalculator = priceCalculator;
 
@@ -46,7 +53,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create() {
             List<string> movies = repo.GetAll<Movie>().Select(m => m.Name).Distinct().ToList();
             List<int> rooms = repo.GetAll<Room>().Select(r => r.Id).Distinct().ToList();
@@ -57,18 +64,24 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create(ShowingModel model) {
             if (ModelState.IsValid) {
+                DateTime now = DateTime.Now;
                 Showing showing = new Showing {
-                    Start = model.Start,
-                    CreatedDate = new DateTime(),
+                    Start = model.Start.ToLocalTime(),
+                    CreatedDate = now,
                     ModifiedDate = new DateTime(),
+                    CreatedBy = "Admin",
+                    ModifiedBy = "Admin",
                     MovieId = repo.GetFirst<Movie>(m => m.Name.Equals(model.Movie)).Id,
                     Is3D = model.Is3D,
                     RoomId = repo.GetFirst<Room>(r => r.Id.Equals(model.Room)).Id
                 };
+                showing.Movie = repo.GetById<Movie>(showing.MovieId);
+                showing.Room = repo.GetById<Room>(showing.RoomId);
                 repo.Create<Showing>(showing);
+                repo.Save();
                 return View("~/Views/Showing/Details.cshtml", showing);
             }
             List<string> movies = repo.GetAll<Movie>().Select(m => m.Name).Distinct().ToList();

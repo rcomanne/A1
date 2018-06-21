@@ -59,7 +59,9 @@ namespace WebUI.Controllers
         public ActionResult Create(Movie movie) {
             if (ModelState.IsValid) {
                 repo.Create<Movie>(movie);
-                return View("../Movie/Details", movie);
+                repo.Save();
+                MovieDetails details = new MovieDetails { Movie = movie };
+                return View("../Movie/Details", details);
             }
             return View();
         }

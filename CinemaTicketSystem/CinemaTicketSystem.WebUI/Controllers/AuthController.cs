@@ -15,14 +15,19 @@ using WebUI.UserManagement;
 using CinemaTicketSystem.Domain.Entities;
 using System.Security.Cryptography;
 using System.Text;
+using System.Security.Claims;
 
 namespace WebUI.Controllers
 {
     public class AuthController : Controller
     {
         
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
+            ClaimsPrincipal user = HttpContext.GetOwinContext().Authentication.User;
+            if (user.IsInRole("Admin") || user.IsInRole("Employee")) {
+                return View("../Auth/Admin");
+            }
+
             return View();
         }
 
@@ -37,7 +42,7 @@ namespace WebUI.Controllers
                     user.SecurityStamp = CreateStamp();
                     var ident = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                     authManager.SignIn(new AuthenticationProperties { IsPersistent = false }, ident);
-                    if (userManager.IsInRole(user.Id, "Admin")) {
+                    if (userManager.IsInRole(user.Id, "Admin") || userManager.IsInRole(user.Id, "Employee")) {
                         return View("../Auth/Admin");
                     }
                     return Redirect(Url.Action("Index", "Movie"));

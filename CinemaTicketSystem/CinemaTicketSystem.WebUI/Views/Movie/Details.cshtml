@@ -35,36 +35,35 @@
                         <dd class="col-8" style="color: white!important">@Model.Movie.LastShowDate.ToShortDateString()</dd>
                     </dl>
                     <div class="row">
-                        @foreach (var showing in Model.Showings)
-                        {
-                            <div class="col-md-6">
-                                <div class="border p-2 h-100 clearfix">
-                                    <dl class="row">
-                                        <dt class="col-sm-4 col-xs-12">Start:</dt>
-                                        <dt class="col-sm-8 col-xs-12">@showing.Start.ToString()</dt>
-                                        <dt class="col-sm-4 col-xs-12">Zaal:</dt>
-                                        <dt class="col-sm-8 col-xs-12">@showing.Room.Name</dt>
-                                        <dt class="col-sm-4 col-xs-12">Prijs:</dt>
-                                        <dd class="col-sm-8 col-xs-12" style="color: white!important">&euro; @string.Format("{0:N2}", ViewBag.PriceCalculator.CalculatePrice(showing))</dd>
-                                    </dl>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            @if(showing.Room.WheelchairAccesible)
-                                            {
-                                                <span class="oi oi-bold" aria-hidden="true" title=">Rolstoel toegangkelijk"></span>
-                                            }
-                                            @if(showing.Is3D)
-                                            {
-                                                <span class="oi oi-people" aria-hidden="true" title="3D"></span>
-                                            }
+                        @if (Model.Showings != null) {
+                            foreach (var showing in Model.Showings) {
+                                <div class="col-md-6">
+                                    <div class="border p-2 h-100 clearfix">
+                                        <dl class="row">
+                                            <dt class="col-sm-4 col-xs-12">Start:</dt>
+                                            <dt class="col-sm-8 col-xs-12">@showing.Start.ToString()</dt>
+                                            <dt class="col-sm-4 col-xs-12">Zaal:</dt>
+                                            <dt class="col-sm-8 col-xs-12">@showing.Room.Name</dt>
+                                            <dt class="col-sm-4 col-xs-12">Prijs:</dt>
+                                            <dd class="col-sm-8 col-xs-12" style="color: white!important">&euro; @string.Format("{0:N2}", ViewBag.PriceCalculator.CalculatePrice(showing))</dd>
+                                        </dl>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                if (showing.Room.WheelchairAccesible) {
+                                                    <span class="oi oi-bold" aria-hidden="true" title=">Rolstoel toegangkelijk"></span>
+                                                }
+                                                if (showing.Is3D) {
+                                                    <span class="oi oi-people" aria-hidden="true" title="3D"></span>
+                                                }
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <a href="@Url.Action("CreateStepOne", "Order", new { id = showing.Id })" class="btn btn-danger btn-block float-right">Reserveer</a>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <a href="@Url.Action("CreateStepOne", "Order", new { id = showing.Id })" class="btn btn-danger btn-block float-right">Reserveer</a>
-                                        </div>
-                                    </div>
                         
+                                    </div>
                                 </div>
-                            </div>
+                            }
                         }
                     </div>
                 </div>

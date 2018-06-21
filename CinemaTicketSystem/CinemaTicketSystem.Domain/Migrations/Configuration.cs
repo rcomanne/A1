@@ -143,25 +143,25 @@ namespace CinemaTicketSystem.Domain.Migrations
                     room6
                 );
 
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 1, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(3), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 2, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(3), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 3, MovieId = 2, RoomId = 3, Start = DateTime.Today.AddHours(3), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 4, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(6), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 5, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(6), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 6, MovieId = 4, RoomId = 3, Start = DateTime.Today.AddHours(6), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 7, MovieId = 6, RoomId = 4, Start = DateTime.Today.AddHours(6), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 8, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(10), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 9, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(10), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 10, MovieId = 3, RoomId = 3, Start = DateTime.Today.AddHours(10), Is3D = true });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 11, MovieId = 4, RoomId = 4, Start = DateTime.Today.AddHours(10), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 12, MovieId = 5, RoomId = 5, Start = DateTime.Today.AddHours(10), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 13, MovieId = 6, RoomId = 6, Start = DateTime.Today.AddHours(10), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 14, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(13), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 15, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(13), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 16, MovieId = 3, RoomId = 3, Start = DateTime.Today.AddHours(13), Is3D = true });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 17, MovieId = 4, RoomId = 4, Start = DateTime.Today.AddHours(13), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 18, MovieId = 5, RoomId = 5, Start = DateTime.Today.AddHours(13), Is3D = false });
-                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 19, MovieId = 6, RoomId = 6, Start = DateTime.Today.AddHours(13), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 1, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(17), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 2, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(17), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 3, MovieId = 2, RoomId = 3, Start = DateTime.Today.AddHours(17), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 4, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(17), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 5, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(18), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 6, MovieId = 4, RoomId = 3, Start = DateTime.Today.AddHours(18), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 7, MovieId = 6, RoomId = 4, Start = DateTime.Today.AddHours(18), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 8, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(18), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 9, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(18), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 10, MovieId = 3, RoomId = 3, Start = DateTime.Today.AddHours(20), Is3D = true });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 11, MovieId = 4, RoomId = 4, Start = DateTime.Today.AddHours(20), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 12, MovieId = 5, RoomId = 5, Start = DateTime.Today.AddHours(20), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 13, MovieId = 6, RoomId = 6, Start = DateTime.Today.AddHours(20), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 14, MovieId = 1, RoomId = 1, Start = DateTime.Today.AddHours(23), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 15, MovieId = 2, RoomId = 2, Start = DateTime.Today.AddHours(23), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 16, MovieId = 3, RoomId = 3, Start = DateTime.Today.AddHours(23), Is3D = true });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 17, MovieId = 4, RoomId = 4, Start = DateTime.Today.AddHours(23), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 18, MovieId = 5, RoomId = 5, Start = DateTime.Today.AddHours(23), Is3D = false });
+                context.Showings.AddOrUpdate(s => s.Id, new Showing { Id = 19, MovieId = 6, RoomId = 6, Start = DateTime.Today.AddHours(23), Is3D = false });
 
                 // Add seats to room 1, 2, 3
                 foreach (int row in Enumerable.Range(1, 8)) {
@@ -218,12 +218,14 @@ namespace CinemaTicketSystem.Domain.Migrations
 
                 context.Users.AddOrUpdate(
                     u => u.Id,
-                    new AppUser { UserName = "admin", PasswordHash = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", Email = "ralph@comanne.eu", EmailConfirmed = true, PhoneNumber = "0636498319", PhoneNumberConfirmed = true }
+                    new AppUser { UserName = "admin", PasswordHash = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", Email = "ralph@comanne.eu", EmailConfirmed = true, PhoneNumber = "0636498319", PhoneNumberConfirmed = true },
+                    new AppUser { UserName = "employee", PasswordHash = "2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8", Email = "ralph@comanne.eu", EmailConfirmed = true, PhoneNumber = "0636498319", PhoneNumberConfirmed = true }
                 );
 
                 context.Roles.AddOrUpdate(
                     r => r.Id,
-                    new AppRole { Name = "Admin" }
+                    new AppRole { Name = "Admin" },
+                    new AppRole { Name = "Employee" }
                 );
 
                 context.Surveys.AddOrUpdate(

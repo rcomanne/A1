@@ -18,14 +18,14 @@ namespace WebUI.Controllers
 
         // GET: Surveys
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index() {
             SurveyStatisticsViewModel statistics = SurveyStatisticsViewModel.ToStatistics(db.Surveys.ToList());
 
 
             ViewBag.Comments = statistics.Comments;
             ViewBag.Results = statistics.GetNumbers();
-            ViewBag.IsAdmin = true;
+            
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace WebUI.Controllers
             {
                 db.Surveys.Add(survey);
                 db.SaveChanges();
-                return View("../Showing/Index.cshtml");
+                return View("../Showing/Index");
             }
 
             return View(survey);

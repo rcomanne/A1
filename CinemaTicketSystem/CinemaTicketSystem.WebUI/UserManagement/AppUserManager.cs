@@ -20,6 +20,7 @@ namespace WebUI.UserManagement {
             var manager = new AppUserManager(new UserStore<AppUser>(context.Get<ApplicationDbContext>()));
 
             manager.AddToRole(manager.FindByName("admin").Id, "Admin");
+            manager.AddToRole(manager.FindByName("employee").Id, "Employee");
             return manager;
         }
 
